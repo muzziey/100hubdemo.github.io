@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talent | 100 Projects Agency</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== GLOBAL ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Montserrat',sans-serif; background:#000; color:#fff; overflow-x:hidden; scroll-behavior:smooth; }
+a { text-decoration:none; color:inherit; }
+/* VIDEO BACKGROUND */
+
+.video-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+.video-bg video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+/* ===== NAVBAR ===== */
+.nav {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 40px; position:fixed; width:100%; top:0; z-index:1000;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+}
+.logo-menu { display:flex; align-items:center; position:relative; }
+.logo-menu img { height:80px; cursor:pointer; transition:0.3s; }
+.logo-menu img:hover { transform:scale(1.05); }
+.dropdown {
+  position:absolute; top:70px; left:0;
+  background: rgba(0,0,0,0.100); backdrop-filter: blur(12px);
+  border-radius:12px; padding:15px; display:none; flex-direction:column;
+  min-width:180px; box-shadow:0 10px 40px rgba(0,0,0,0.6);
+  animation:fadeDown 0.3s ease;
+}
+.dropdown a { color:#fff; padding:8px 0; font-size:14px; opacity:0.8; transition:0.3s; }
+.dropdown a:hover { color:#e10600; opacity:1; }
+@keyframes fadeDown { from {opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
+.nav nav a { margin-left:30px; font-weight:500; transition:0.3s; }
+.nav nav a.btn-outline { border:1px solid #fff; padding:6px 14px; border-radius:20px; }
+.nav nav a.btn-outline:hover { background:#fff; color:#000; }
+
+/* ===== HERO ===== */
+.hero {
+  position:relative; width:100%; height:100vh;
+  display:flex; justify-content:center; align-items:center; text-align:center; overflow:hidden;
+}
+.hero video {
+  position:absolute; width:100%; height:100%; object-fit:cover; filter: brightness(0.45) contrast(1.2); z-index:0;
+}
+.hero::before {
+  content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); z-index:1;
+}
+.hero-content { position:relative; z-index:2; max-width:1000px; }
+.hero h1 { font-size:80px; font-weight:800; letter-spacing:6px; margin-bottom:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:6px;}
+.hero h1 span { display:inline-block; opacity:0; transform:translateY(50px); animation:letterAnim 0.6s forwards; }
+.hero h1 span:nth-child(1){animation-delay:0.1s;}
+.hero h1 span:nth-child(2){animation-delay:0.2s;}
+.hero h1 span:nth-child(3){animation-delay:0.3s;}
+.hero h1 span:nth-child(4){animation-delay:0.4s;}
+.hero h1 span:nth-child(5){animation-delay:0.5s;}
+.hero h1 span:nth-child(6){animation-delay:0.6s;}
+@keyframes letterAnim{ to{opacity:1; transform:translateY(0);} }
+.hero p { font-size:20px; margin-bottom:30px; color:#ccc; opacity:0; animation:fadeUp 1s 0.7s forwards; }
+@keyframes fadeUp{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+.hero .hero-buttons { display:flex; gap:20px; justify-content:center; opacity:0; animation:fadeUp 1s 1.2s forwards; }
+.hero .btn-primary, .hero .btn-outline {
+  padding:15px 35px; border-radius:30px; font-weight:600; letter-spacing:1px; transition:0.3s;
+}
+.hero .btn-primary { background:#e10600; color:#fff; box-shadow:0 0 20px rgba(225,6,0,0.6);}
+.hero .btn-primary:hover{ background:#fff; color:#000; box-shadow:0 0 25px rgba(225,6,0,0.8);}
+.hero .btn-outline { border:1px solid #fff; color:#fff; }
+.hero .btn-outline:hover { background:#e10600; color:#fff; }
+
+/* ===== FILTER BAR ===== */
+.filter-bar { display:flex; justify-content:center; gap:20px; padding:50px 20px; flex-wrap:wrap; }
+.filter-btn {
+  padding:12px 24px; border:1px solid #555; background:none; color:#fff; cursor:pointer;
+  letter-spacing:1px; transition:.3s; border-radius:12px;
+}
+.filter-btn.active, .filter-btn:hover { background:#e10600; color:#fff; }
+
+/* ===== RUNWAY GRID ===== */
+.runway { display:flex; overflow-x:auto; padding:100px 60px; gap:40px; scroll-behavior:smooth; perspective:1000px; }
+.runway::-webkit-scrollbar{display:none;}
+.work-item {
+  position:relative; flex:0 0 280px; border-radius:16px; overflow:hidden; cursor:pointer;
+  opacity:0; transform:translateY(50px) scale(.9); transition:transform .3s ease, opacity .5s ease, box-shadow .3s;
+  will-change:transform;
+  background:#111;
+}
+.work-item.reveal{animation:cardReveal 0.8s ease forwards;}
+@keyframes cardReveal{ to{opacity:1; transform:translateY(0) scale(1);} }
+.work-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.work-item:hover img{ transform:scale(1.15);}
+.work-item::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
+  opacity:0; transition:.4s;
+}
+.work-item:hover::after{opacity:1;}
+.talent-info{
+  position:absolute; bottom:25px; left:25px; opacity:0; transform:translateY(20px);
+  transition:.4s; color:#fff;
+}
+.work-item:hover .talent-info{opacity:1; transform:translateY(0);}
+.talent-name{font-weight:700; letter-spacing:2px; font-size:16px;}
+.talent-role{font-size:13px; opacity:.8;}
+
+/* 3D tilt */
+.work-item:hover{ box-shadow:0 25px 45px rgba(225,6,0,.4); }
+
+/* ===== MODAL ===== */
+.modal{
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,.95); display:flex; align-items:center; justify-content:center;
+  flex-direction:column; opacity:0; pointer-events:none; transition:.4s; z-index:2000; backdrop-filter: blur(5px);
+}
+.modal.active{opacity:1; pointer-events:auto;}
+.modal img{max-width:70%; max-height:70%; margin-bottom:20px; border-radius:10px; box-shadow:0 0 25px rgba(225,6,0,0.5);}
+.modal-info{text-align:center; color:#fff;}
+.modal h2{margin-bottom:10px; font-weight:800;}
+.modal button{margin-top:20px; padding:12px 30px; border:none; background:#e10600; color:#fff; cursor:pointer; border-radius:20px; font-weight:600; transition:.3s;}
+.modal button:hover{ background:#fff; color:#000; }
+.close{position:absolute; top:40px; right:60px; font-size:40px; cursor:pointer;}
+
+/* ===== BOOKING ===== */
+.booking{ padding:100px 40px; text-align:center; background:#111; }
+.booking h2{font-size:40px; margin-bottom:20px; font-weight:800;}
+.booking button{padding:15px 50px; border:none; background:#e10600; color:#fff; font-weight:600; cursor:pointer; border-radius:30px; transition:.3s; box-shadow:0 0 25px rgba(225,6,0,.5);}
+.booking button:hover{background:#fff;color:#000;}
+
+/* ===== FOOTER ===== */
+footer{text-align:center; padding:60px; opacity:.6; font-size:14px;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){ .hero h1{font-size:48px;} .runway{padding:60px 20px;} .work-item{flex:0 0 240px;} }
+@media(max-width:480px){ .runway{flex-direction:column;gap:20px;} .hero h1{font-size:36px;} }
+
+</style>
+</head>
+<body>
+<div class="video-bg">
+
+<video autoplay loop muted playsinline>
+
+<source src="assets/Background.mp4" type="video/mp4">
+
+</video>
+
+</div>
+<!-- NAV -->
+<header class="nav">
+  <div class="logo-menu">
+    <img src="assets/logo.png" id="menuToggle">
+    <div class="dropdown" id="dropdownMenu">
+      <a href="talent.html">View Talent</a>
+      <a href="events.html">Events</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="games.html">Games</a>
+      <a href="rewards.html">Rewards</a>
+    </div>
+  </div>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="#runway">Our Projects</a>
+    <a href="#Services">Services</a>
+    <a href="startproject.html" class="btn-outline">Start Project</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<video autoplay muted loop>
+<source src="assets/fashion.mp4" type="video/mp4">
+</video>
+<div class="hero-content">
+<h1><span>T</span><span>A</span><span>L</span><span>E</span><span>N</span><span>T</span></h1>
+<p>Campaign-ready faces. Culture-forward presence.</p>
+<div class="hero-buttons">
+<a href="#runway" class="btn-primary">View Talent</a>
+<a href="startproject.html" class="btn-outline">Book Talent</a>
+</div>
+</div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar">
+<button class="filter-btn active" onclick="filterTalent('all',this)">All</button>
+<button class="filter-btn" onclick="filterTalent('music',this)">Music</button>
+<button class="filter-btn" onclick="filterTalent('fashion',this)">Fashion</button>
+<button class="filter-btn" onclick="filterTalent('campaign',this)">Campaign</button>
+</div>
+
+<!-- RUNWAY -->
+<section class="work">
+<div class="runway" id="runway">
+<!-- Example Talent Card -->
+<div class="work-item music" data-size="large" onclick="openTalent(this,'NASTY C','Artist')">
+<img src="assets/Talent/1.png">
+<div class="talent-info"><div class="talent-name">NASTY C</div><div class="talent-role">Artist</div></div>
+</div>
+<div class="work-item campaign" data-size="medium" onclick="openTalent(this,'LEGO','Campaign')">
+<img src="assets/Talent/2.png">
+<div class="talent-info"><div class="talent-name">LEGO</div><div class="talent-role">Campaign</div></div>
+</div>
+<div class="work-item music" data-size="small" onclick="openTalent(this,'SIIBU','EP Launch')">
+<img src="assets/Talent/3.png">
+<div class="talent-info"><div class="talent-name">SIIBU</div><div class="talent-role">Artist</div></div>
+</div>
+<div class="work-item fashion" data-size="large" onclick="openTalent(this,'DESIREE','Fashion Talent')">
+<img src="assets/Talent/5.png">
+<div class="talent-info"><div class="talent-name">DESIREE</div><div class="talent-role">Fashion</div></div>
+</div>
+<div class="work-item fashion" data-size="medium" onclick="openTalent(this,'G-STAR RAW','Fashion Brand')">
+<img src="assets/Talent/7.png">
+<div class="talent-info"><div class="talent-name">G-STAR RAW</div><div class="talent-role">Fashion</div></div>
+</div>
+<div class="work-item campaign" data-size="small" onclick="openTalent(this,'THE PULSE','Campaign')">
+<img src="assets/Talent/8.png">
+<div class="talent-info"><div class="talent-name">THE PULSE</div><div class="talent-role">Campaign</div></div>
+</div>
+</div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="talentModal">
+<div class="close" onclick="closeTalent()">×</div>
+<img id="talentImg">
+<div class="modal-info">
+<h2 id="talentName"></h2>
+<p id="talentRole"></p>
+<button onclick="window.location='startproject.html'">Book Talent</button>
+</div>
+</div>
+
+<!-- BOOKING -->
+<section class="booking">
+<h2>Work With Our Talent</h2>
+<p>Book culture-leading talent for your next campaign.</p>
+<button onclick="window.location='startproject.html'">Start a Project</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 100 Projects Agency</p>
+<p>Creative Direction • Campaigns • Talent</p>
+</footer>
+
+<script>
+// NAV DROPDOWN
+const menuToggle = document.getElementById('menuToggle');
+const dropdownMenu = document.getElementById('dropdownMenu');
+menuToggle.addEventListener('click', ()=>{ dropdownMenu.style.display = dropdownMenu.style.display==='flex'?'none':'flex'; });
+
+// FILTER
+function filterTalent(category,btn){
+  document.querySelectorAll(".work-item").forEach(item=>{
+    item.style.display = (category==='all' || item.classList.contains(category))?'flex':'none';
+  });
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// MODAL
+function openTalent(el,name,role){
+  document.getElementById("talentImg").src=el.querySelector("img").src;
+  document.getElementById("talentName").innerText=name;
+  document.getElementById("talentRole").innerText=role;
+  document.getElementById("talentModal").classList.add("active");
+}
+function closeTalent(){ document.getElementById("talentModal").classList.remove("active"); }
+
+// SEQUENTIAL REVEAL
+document.querySelectorAll(".work-item").forEach((card,index)=>{
+  setTimeout(()=>{ card.classList.add("reveal"); }, index*250);
+});
+
+// 3D TILT
+document.querySelectorAll(".work-item").forEach(card=>{
+  card.addEventListener("mousemove", e=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left; const y=e.clientY-rect.top;
+    const cx=rect.width/2; const cy=rect.height/2;
+    const rx=((y-cy)/cy)*8; const ry=((x-cx)/cx)*8;
+    card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) scale(1.05)`;
+  });
+  card.addEventListener("mouseleave",()=>{ card.style.transform='rotateX(0deg) rotateY(0deg) scale(1)'; });
+});
+
+// RUNWAY AUTOSCROLL
+let runway=document.getElementById('runway'); let scrollAmount=0;
+let autoScroll = setInterval(()=>{ scrollAmount+=0.7; if(scrollAmount>runway.scrollWidth-runway.clientWidth) scrollAmount=0; runway.scrollTo({left:scrollAmount, behavior:'smooth'}); },40);
+runway.addEventListener('mouseenter',()=>{ clearInterval(autoScroll); });
+runway.addEventListener('mouseleave',()=>{ autoScroll=setInterval(()=>{ scrollAmount+=0.7; if(scrollAmount>runway.scrollWidth-runway.clientWidth) scrollAmount=0; runway.scrollTo({left:scrollAmount, behavior:'smooth'}); },40); });
+
+</script>
+
+</body>
+</html>

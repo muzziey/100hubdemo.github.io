@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewards Dashboard | 100 HUB Games</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* GLOBAL */
+body, html{
+  margin:0;
+  font-family:'Montserrat',sans-serif;
+  background:#0a0a0a;
+  color:#fff;
+}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;}
+
+/* NAV */
+.nav{
+display:flex; justify-content:space-between; align-items:center;
+padding:15px 30px; position:fixed; width:100%; top:0;
+background:#050505cc; z-index:1000;
+}
+.nav .logo img{height:60px;}
+.nav a{margin-left:30px;font-weight:500;}
+.btn-outline{border:1px solid #fff; padding:6px 14px; border-radius:20px; transition:.3s;}
+.btn-outline:hover{background:#fff; color:#000;}
+
+/* HERO */
+.hero{
+padding-top:140px;
+text-align:center; position:relative;
+background: linear-gradient(135deg,#1b1b1b,#111);
+padding-bottom:70px;
+border-bottom:2px solid #e10600;
+}
+.hero h1{font-size:64px;font-weight:800;margin-bottom:15px;}
+.hero p{opacity:0.8;font-size:18px; margin-bottom:25px;}
+.btn-primary{padding:14px 35px;background:#e10600;border:none;border-radius:30px;font-weight:600;color:#fff;transition:.3s; font-size:16px;}
+.btn-primary:hover{background:#fff;color:#000;}
+
+/* PLAYER SECTION */
+.player-section{
+  display:flex;
+  justify-content:space-around;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:40px;
+  margin-top:40px;
+}
+.player-stats{
+  flex:1; max-width:300px;
+  display:flex; flex-direction:column; gap:20px;
+  background:rgba(30,30,30,0.7);
+  padding:25px; border-radius:20px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+.player-stats div{
+  padding:15px; border-radius:15px; background:rgba(50,50,50,0.5);
+  transition:0.3s;
+}
+.player-stats div:hover{transform:scale(1.05);}
+.player-stats div span{display:block;font-weight:600;font-size:22px;}
+.player-stats div small{display:block;font-size:12px; opacity:.7;}
+
+/* DAILY BONUS SPIN */
+.daily-bonus{
+  flex:1; max-width:300px;
+  background:#111; padding:30px; border-radius:25px;
+  text-align:center; box-shadow:0 4px 15px rgba(0,0,0,0.5);
+  margin:auto;
+}
+.daily-bonus h2{margin-bottom:20px; font-size:28px;}
+.daily-bonus button{padding:12px 30px; background:#e10600; border:none; color:#fff; font-weight:600; border-radius:25px; transition:.3s;}
+.daily-bonus button:hover{background:#fff; color:#000;}
+#wheel{
+  margin:20px auto; width:200px; height:200px; border-radius:50%;
+  border:6px solid #e10600;
+  display:flex; justify-content:center; align-items:center;
+  font-weight:800; font-size:24px; cursor:pointer;
+  background:conic-gradient(#e10600 0 25%,#111 25% 50%,#e10600 50% 75%,#111 75% 100%);
+  transition: transform 3s cubic-bezier(.17,.67,.83,.67);
+}
+
+/* REWARDS GRID */
+.rewards-grid{
+display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px; padding:50px 20px;
+}
+.reward-card{
+background:rgba(40,40,40,0.8); padding:20px; border-radius:15px; text-align:center;
+position:relative; overflow:hidden; transition:.3s;
+opacity:0; transform:translateY(20px);
+}
+.reward-card.show{
+  opacity:1;
+  transform:translateY(0);
+  transition: all 0.5s ease;
+}
+.reward-card:hover{transform:scale(1.05);}
+.reward-card.unlocked{border:2px solid #e10600;}
+.reward-card .badge{
+  font-size:50px; margin-bottom:10px; display:block;
+  animation:badgeGlow 2s infinite;
+}
+@keyframes badgeGlow{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.2);}
+}
+.reward-card h3{font-size:18px;font-weight:700;margin-bottom:5px;}
+.reward-card p{font-size:13px; opacity:.8; margin-bottom:10px;}
+.progress-bar-wrap{background:#222; border-radius:10px; overflow:hidden; height:8px; margin-bottom:5px;}
+.progress-bar{height:100%; width:0%; background:#e10600; transition:width 0.5s ease;}
+
+/* LEADERBOARD */
+.leaderboard-section{
+  padding:50px 20px;
+  text-align:center;
+  background: linear-gradient(135deg,#111,#1b1b1b);
+}
+.leaderboard-section h2{
+  font-size:32px;
+  margin-bottom:30px;
+}
+.leaderboard{
+  max-width:600px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+.leaderboard-card{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 25px;
+  border-radius:15px;
+  background:rgba(40,40,40,0.8);
+  transition:0.3s;
+  opacity:0;
+  transform:translateY(20px);
+}
+.leaderboard-card.show{
+  opacity:1;
+  transform:translateY(0);
+  transition: all 0.5s ease;
+}
+.leaderboard-card:hover{
+  transform:scale(1.03);
+  background:rgba(50,50,50,0.9);
+}
+.leaderboard-card span{
+  font-weight:600;
+  font-size:18px;
+}
+.leaderboard-card .position{
+  font-size:20px;
+  font-weight:800;
+  margin-right:15px;
+  color:#e10600;
+}
+
+/* FOOTER */
+footer{text-align:center; padding:40px; font-size:14px; opacity:.6; background:#0a0a0a;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{font-size:48px;}
+  .player-section{flex-direction:column; align-items:center; gap:30px;}
+  .daily-bonus, .player-stats{max-width:90%;}
+}
+@media(max-width:480px){ .rewards-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+<div class="logo"><a href="index.html"><img src="assets/logo.png" alt="100 Projects"></a></div>
+<nav>
+<a href="index.html#work">Home</a>
+<a href="games.html">Games</a>
+<a href="rewards.html" class="btn-outline">Rewards</a>
+<a href="startproject.html" class="btn-outline">Start Project</a>
+</nav>
+</header>
+
+<!-- HERO + PLAYER SECTION -->
+<section class="hero">
+<h1>Your Rewards Dashboard</h1>
+<p>Track your coins, badges, levels, and claim daily bonuses!</p>
+<button class="btn-primary" onclick="window.location='games.html'">Play Games</button>
+
+<div class="player-section">
+  <!-- Player Stats -->
+  <div class="player-stats">
+    <div>Coins: <span id="coins">0</span><small>Earned Coins</small></div>
+    <div>Level: <span id="level">1</span><small>Current Level</small></div>
+    <div>Completed: <span id="completed">0</span><small>Games Finished</small></div>
+  </div>
+
+  <!-- Daily Bonus Spin -->
+  <div class="daily-bonus">
+    <h2>Daily Bonus Spin</h2>
+    <div id="wheel">SPIN</div>
+    <p id="dailyText"></p>
+  </div>
+</div>
+</section>
+
+<!-- REWARDS GRID -->
+<section class="rewards-grid" id="rewardsGrid"></section>
+
+<!-- LEADERBOARD -->
+<section class="leaderboard-section">
+  <h2>Top Players</h2>
+  <div class="leaderboard" id="leaderboard"></div>
+</section>
+
+  <!-- FOOTER -->
+ <footer>
+© 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+// Player system
+let player = JSON.parse(localStorage.getItem("player")) || {coins:0,xp:0,level:1,completed:0};
+function savePlayer(){ localStorage.setItem("player", JSON.stringify(player)); }
+function updateUI(){
+  document.getElementById("coins").innerText=player.coins;
+  document.getElementById("level").innerText=player.level;
+  document.getElementById("completed").innerText=player.completed;
+}
+updateUI();
+
+// Rewards
+const rewards=[
+{title:"Bronze Badge",desc:"Complete 1 game",coins:50,level:1},
+{title:"Silver Badge",desc:"Complete 3 games",coins:150,level:2},
+{title:"Gold Badge",desc:"Complete all games",coins:300,level:3},
+{title:"Platinum Badge",desc:"Max level reached",coins:500,level:4}
+];
+
+function loadRewards(){
+  const grid=document.getElementById("rewardsGrid");
+  grid.innerHTML="";
+  rewards.forEach((r,i)=>{
+    const unlocked=player.completed>=r.level;
+    const card=document.createElement("div");
+    card.className="reward-card"+(unlocked?" unlocked":"");
+    card.innerHTML=`<div class="badge">${unlocked?"🏆":"🔒"}</div>
+      <h3>${r.title}</h3>
+      <p>${r.desc}</p>
+      <div class="progress-bar-wrap"><div class="progress-bar" style="width:${Math.min(player.completed/r.level*100,100)}%"></div></div>
+      <p>${r.coins} Coins</p>`;
+    grid.appendChild(card);
+    // Staggered animation
+    setTimeout(()=>{card.classList.add("show");}, i*300);
+  });
+}
+loadRewards();
+
+// Confetti for new rewards
+rewards.forEach(r=>{
+  if(player.completed>=r.level && !localStorage.getItem("reward"+r.level)){
+    confetti({particleCount:100,spread:70,origin:{y:0.6}});
+    localStorage.setItem("reward"+r.level,true);
+  }
+});
+
+// Daily spin
+const wheel=document.getElementById("wheel");
+wheel.addEventListener("click",()=>{
+  let today=new Date().toDateString();
+  if(localStorage.getItem("dailySpin")===today){document.getElementById("dailyText").innerText="Already claimed today!"; return;}
+  const prizes=[50,100,150,200,250,300];
+  const prize=prizes[Math.floor(Math.random()*prizes.length)];
+  player.coins+=prize;
+  localStorage.setItem("dailySpin",today);
+  savePlayer(); updateUI(); loadRewards();
+  confetti({particleCount:150,spread:90,origin:{y:0.6}});
+  document.getElementById("dailyText").innerText=`You won ${prize} coins!`;
+});
+
+// Leaderboard
+const leaderboardData = [
+  {name:"Alice", coins:1200},
+  {name:"Bob", coins:950},
+  {name:"Charlie", coins:850},
+  {name:"Dana", coins:700},
+  {name:"Eli", coins:650}
+];
+
+function loadLeaderboard(){
+  const board=document.getElementById("leaderboard");
+  board.innerHTML="";
+  leaderboardData.forEach((p,i)=>{
+    const card=document.createElement("div");
+    card.className="leaderboard-card";
+    card.innerHTML=`<span class="position">${i+1}</span>
+      <span class="name">${p.name}</span>
+      <span class="coins">${p.coins} Coins</span>`;
+    board.appendChild(card);
+    setTimeout(()=>{card.classList.add("show");}, i*300);
+  });
+}
+loadLeaderboard();
+</script>
+
+</body>
+</html>

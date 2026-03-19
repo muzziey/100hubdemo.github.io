@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>100 HUB Games</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* GLOBAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+/* VIDEO BACKGROUND */
+
+.video-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+.video-bg video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* NAV */
+
+.nav{
+
+position:fixed;
+top:0;
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:10px 40px;
+
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(10px);
+
+z-index:1000;
+
+}
+
+.logo img{
+height:80px;
+}
+
+.nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+}
+
+/* HERO */
+
+.hero{
+padding-top:150px;
+text-align:center;
+}
+
+.hero h1{
+font-size:60px;
+font-weight:800;
+}
+
+.player{
+margin-top:10px;
+font-size:18px;
+}
+
+/* XP BAR */
+
+.xp-bar{
+width:320px;
+height:8px;
+background:#222;
+margin:20px auto;
+border-radius:20px;
+overflow:hidden;
+}
+
+.xp-progress{
+height:100%;
+width:0%;
+background:#e10600;
+transition:.4s;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+
+gap:20px;
+
+padding:40px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,0.05);
+
+backdrop-filter:blur(12px);
+
+padding:25px;
+
+border-radius:15px;
+
+text-align:center;
+
+}
+
+/* GAMES */
+
+.games{
+
+padding:60px 40px;
+
+}
+
+.games-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:30px;
+
+}
+
+.game-card{
+
+background:rgba(255,255,255,0.05);
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.game-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.play-btn{
+
+background:#e10600;
+
+border:none;
+
+padding:12px 22px;
+
+border-radius:25px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+/* MODAL */
+
+.modal{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,0.9);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:2000;
+
+}
+
+.modal-content{
+
+background:#111;
+
+padding:40px;
+
+border-radius:15px;
+
+width:420px;
+
+text-align:center;
+
+}
+
+.close{
+
+cursor:pointer;
+
+float:right;
+
+}
+
+/* MEMORY */
+
+.memory-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:10px;
+
+margin-top:20px;
+
+}
+
+.memory-card{
+
+background:#222;
+
+padding:20px;
+
+font-size:22px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+/* TARGET */
+
+.target{
+
+width:50px;
+
+height:50px;
+
+background:#e10600;
+
+border-radius:50%;
+
+position:absolute;
+
+cursor:pointer;
+
+}
+
+/* SHOP */
+
+.shop{
+
+padding:80px 40px;
+
+text-align:center;
+
+}
+
+.shop-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:30px;
+
+margin-top:30px;
+
+}
+
+.shop-item{
+
+background:#111;
+
+padding:30px;
+
+border-radius:15px;
+
+}
+
+.shop-item button{
+
+margin-top:15px;
+
+background:#e10600;
+
+border:none;
+
+padding:10px 20px;
+
+border-radius:20px;
+
+color:white;
+
+}
+
+/* LEADERBOARD */
+
+.leaderboard{
+
+padding:60px;
+
+text-align:center;
+
+}
+
+table{
+
+margin:auto;
+
+border-collapse:collapse;
+
+}
+
+td,th{
+
+padding:10px 20px;
+
+border-bottom:1px solid #333;
+
+}
+
+footer{
+
+padding:60px;
+
+text-align:center;
+
+color:#777;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="video-bg">
+
+<video autoplay loop muted playsinline>
+
+<source src="assets/Background.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+<header class="nav">
+
+<div class="logo">
+
+<img src="assets/logo.png">
+
+</div>
+
+<nav>
+
+<a href="#">About</a>
+<a href="#">Projects</a>
+<a href="#">Services</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>100 HUB GAMES</h1>
+
+<div class="player">
+
+Coins: <span id="coins">0</span> | Level: <span id="level">1</span>
+
+</div>
+
+<div class="xp-bar">
+
+<div class="xp-progress" id="xpBar"></div>
+
+</div>
+
+<button class="play-btn" onclick="dailyReward()">Daily Reward</button>
+
+</section>
+
+<section class="dashboard">
+
+<div class="card">
+
+<h3>Coins</h3>
+
+<p id="coinsDash">0</p>
+
+</div>
+
+<div class="card">
+
+<h3>Level</h3>
+
+<p id="levelDash">1</p>
+
+</div>
+
+<div class="card">
+
+<h3>XP</h3>
+
+<p id="xpDash">0 / 100</p>
+
+</div>
+
+</section>
+
+<section class="games">
+
+<div class="games-grid">
+
+<div class="game-card">
+
+<h3>Quiz Game</h3>
+
+<button class="play-btn" onclick="openGame('quiz')">Play</button>
+
+</div>
+
+<div class="game-card">
+
+<h3>Memory Game</h3>
+
+<button class="play-btn" onclick="openGame('memory')">Play</button>
+
+</div>
+
+<div class="game-card">
+
+<h3>Speed Click</h3>
+
+<button class="play-btn" onclick="startSpeed()">Play</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="shop">
+
+<h2>Coin Shop</h2>
+
+<div class="shop-grid">
+
+<div class="shop-item">
+
+<h3>XP Boost</h3>
+
+<button onclick="buyXP()">Buy (200)</button>
+
+</div>
+
+<div class="shop-item">
+
+<h3>Double Coins</h3>
+
+<button onclick="buyBoost()">Buy (300)</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="leaderboard">
+
+<h2>Leaderboard</h2>
+
+<table id="leaderboard">
+
+<tr>
+
+<th>Rank</th>
+<th>Coins</th>
+
+</tr>
+
+</table>
+
+</section>
+
+<div class="modal" id="gameModal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeGame()">✖</span>
+
+<div id="gameArea"></div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 100 Projects Agency</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+/* PLAYER */
+
+let player = JSON.parse(localStorage.getItem("player")) || {
+
+coins:0,
+xp:0,
+level:1,
+boost:false
+
+}
+
+function save(){
+
+localStorage.setItem("player",JSON.stringify(player))
+
+}
+
+function updateUI(){
+
+coins.innerText=player.coins
+coinsDash.innerText=player.coins
+
+level.innerText=player.level
+levelDash.innerText=player.level
+
+xpDash.innerText=player.xp+" / 100"
+
+xpBar.style.width=player.xp+"%"
+
+}
+
+updateUI()
+
+function reward(c,x){
+
+if(player.boost){
+
+c*=2
+player.boost=false
+
+}
+
+player.coins+=c
+player.xp+=x
+
+if(player.xp>=100){
+
+player.level++
+player.xp=0
+
+}
+
+save()
+updateUI()
+updateLeaderboard()
+
+confetti()
+
+}
+
+/* DAILY */
+
+function dailyReward(){
+
+let today=new Date().toDateString()
+
+if(localStorage.getItem("daily")!==today){
+
+player.coins+=100
+
+localStorage.setItem("daily",today)
+
+save()
+updateUI()
+
+}
+
+}
+
+/* SHOP */
+
+function buyXP(){
+
+if(player.coins>=200){
+
+player.coins-=200
+player.xp+=50
+
+save()
+updateUI()
+
+}
+
+}
+
+function buyBoost(){
+
+if(player.coins>=300){
+
+player.coins-=300
+player.boost=true
+
+save()
+updateUI()
+
+}
+
+}
+
+/* LEADERBOARD */
+
+function updateLeaderboard(){
+
+let board=JSON.parse(localStorage.getItem("leaderboard")) || []
+
+board.push(player.coins)
+
+board.sort((a,b)=>b-a)
+
+board=board.slice(0,10)
+
+localStorage.setItem("leaderboard",JSON.stringify(board))
+
+let table=document.getElementById("leaderboard")
+
+table.innerHTML="<tr><th>Rank</th><th>Coins</th></tr>"
+
+board.forEach((score,i)=>{
+
+let row=table.insertRow()
+
+row.insertCell(0).innerText=i+1
+row.insertCell(1).innerText=score
+
+})
+
+}
+
+updateLeaderboard()
+
+/* MODAL */
+
+function openGame(type){
+
+gameModal.style.display="flex"
+
+if(type=="quiz"){
+
+gameArea.innerHTML=`
+
+<h2>Quiz</h2>
+
+<p>What does KPI stand for?</p>
+
+<input id="ans">
+
+<br><br>
+
+<button onclick="checkQuiz()">Submit</button>
+
+`
+
+}
+
+if(type=="memory"){
+
+startMemory()
+
+}
+
+}
+
+function closeGame(){
+
+gameModal.style.display="none"
+
+}
+
+/* QUIZ */
+
+function checkQuiz(){
+
+let ans=document.getElementById("ans").value
+
+if(ans.toLowerCase().includes("performance")){
+
+reward(50,20)
+
+closeGame()
+
+}
+
+}
+
+/* MEMORY */
+
+function startMemory(){
+
+let symbols=["🔥","🔥","⭐","⭐","💎","💎","🎯","🎯"]
+
+symbols.sort(()=>0.5-Math.random())
+
+let grid=document.createElement("div")
+
+grid.className="memory-grid"
+
+let first=null
+let second=null
+let lock=false
+let matches=0
+
+symbols.forEach(sym=>{
+
+let card=document.createElement("div")
+
+card.className="memory-card"
+
+card.onclick=function(){
+
+if(lock || card.innerHTML) return
+
+card.innerHTML=sym
+
+if(!first){
+
+first=card
+
+}else{
+
+second=card
+
+if(first.innerHTML===second.innerHTML){
+
+matches++
+
+first=null
+second=null
+
+if(matches===4){
+
+reward(60,30)
+
+closeGame()
+
+}
+
+}else{
+
+lock=true
+
+setTimeout(()=>{
+
+first.innerHTML=""
+second.innerHTML=""
+first=null
+second=null
+lock=false
+
+},800)
+
+}
+
+}
+
+}
+
+grid.appendChild(card)
+
+})
+
+gameArea.innerHTML=""
+gameArea.appendChild(grid)
+
+}
+
+/* SPEED */
+
+function startSpeed(){
+
+let clicks=0
+let time=10
+
+let interval=setInterval(()=>{
+
+let target=document.createElement("div")
+
+target.className="target"
+
+target.style.top=Math.random()*80+"vh"
+target.style.left=Math.random()*90+"vw"
+
+target.onclick=function(){
+
+clicks++
+target.remove()
+
+}
+
+document.body.appendChild(target)
+
+setTimeout(()=>target.remove(),800)
+
+},600)
+
+let timer=setInterval(()=>{
+
+time--
+
+if(time<=0){
+
+clearInterval(interval)
+clearInterval(timer)
+
+if(clicks>=10){
+
+reward(70,30)
+
+}
+
+}
+
+},1000)
+
+}
+
+</script>
+
+</body>
+</html>

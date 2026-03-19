@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply as Talent | 100 Projects Agency</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat',sans-serif; }
+body { background:#000; color:#fff; line-height:1.6; overflow-x:hidden; }
+
+/* NAVBAR */
+.nav {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 30px; position:fixed; width:100%; top:0; z-index:1000;
+  background:#050505fb; backdrop-filter: blur(6px);
+}
+.nav .logo { font-weight:800; font-size:22px; letter-spacing:2px; cursor:pointer; }
+.nav nav a { margin-left:25px; font-weight:500; text-decoration:none; color:#fff; transition:0.3s; }
+.nav nav a:hover { color:#e10600; }
+.nav nav a.btn-outline { border:1px solid #fff; padding:6px 14px; border-radius:20px; }
+.nav nav a.btn-outline:hover { background:#fff; color:#000; }
+
+/* HERO */
+.apply-hero {
+  position:relative; height:70vh;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  background: url('assets/hero-apply.png') center center / cover no-repeat;
+}
+.apply-hero::before {
+  content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4); z-index:1;
+}
+.apply-hero h1 { position:relative; z-index:2; font-size:60px; font-weight:800; margin-bottom:20px; }
+.apply-hero p { position:relative; z-index:2; font-size:18px; max-width:700px; opacity:0.85; }
+
+/* APPLICATION FORM */
+.apply-form { max-width:900px; margin: -60px auto 100px; padding:60px 30px; background:#111; border-radius:20px; }
+.apply-form h2 { text-align:center; font-size:42px; margin-bottom:40px; font-weight:800; }
+.apply-form form { display:grid; grid-template-columns:1fr 1fr; gap:25px; }
+.apply-form .form-group { display:flex; flex-direction:column; }
+.apply-form label { font-size:13px; letter-spacing:1px; margin-bottom:6px; opacity:0.7; }
+.apply-form input, .apply-form textarea { padding:14px 18px; border-radius:12px; border:none; background:#222; color:#fff; font-size:16px; outline:none; transition:0.3s; }
+.apply-form input:focus, .apply-form textarea:focus { background:#1a1a1a; box-shadow:0 0 15px rgba(225,6,0,0.5); }
+.apply-form textarea { grid-column:span 2; min-height:140px; resize:none; }
+
+.apply-form button {
+  grid-column:span 2; padding:16px; border:none; border-radius:30px;
+  background:#e10600; color:#fff; font-weight:700; font-size:18px; cursor:pointer; transition:0.3s;
+}
+.apply-form button:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(225,6,0,0.6); }
+
+.disclaimer { margin-top:20px; font-size:14px; opacity:0.6; text-align:center; grid-column:span 2; }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .apply-hero h1 { font-size:42px; }
+  .apply-hero p { font-size:16px; padding:0 20px; }
+  .apply-form form { grid-template-columns:1fr; gap:20px; }
+  .apply-form button, .disclaimer { grid-column:span 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="nav">
+  <div class="logo">100 PROJECTS</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#work">Work</a>
+    <a href="startproject.html" class="btn-outline">Start a Project</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="apply-hero">
+  <h1>Model Application</h1>
+  <p>We work with a limited number of models for commercial and streetwear campaigns. If selected, you’ll be contacted directly.</p>
+</section>
+
+<!-- FORM -->
+<section class="apply-form">
+  <h2>Apply Now</h2>
+  <form>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" placeholder="John Doe" required>
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" placeholder="22" required>
+    </div>
+
+    <div class="form-group">
+      <label>Location</label>
+      <input type="text" placeholder="City, Country" required>
+    </div>
+
+    <div class="form-group">
+      <label>Height (cm)</label>
+      <input type="number" placeholder="180">
+    </div>
+
+    <div class="form-group">
+      <label>Instagram Handle</label>
+      <input type="text" placeholder="@username" required>
+    </div>
+
+    <div class="form-group">
+      <label>Portfolio / Digitals Link</label>
+      <input type="url" placeholder="Google Drive / Website / Dropbox" required>
+    </div>
+
+    <div class="form-group">
+      <label>Why do you want to work with 100 Projects?</label>
+      <textarea placeholder="Your answer..." required></textarea>
+    </div>
+
+    <button type="submit">Submit Application</button>
+    <p class="disclaimer">We review applications continuously. Only selected applicants will be contacted.</p>
+  </form>
+</section>
+
+<footer>
+© 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
+</footer>
+
+</body>
+</html>

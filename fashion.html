@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion | 100 Projects Agency</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* ================= RESET ================= */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Montserrat',sans-serif; background:#000; color:#fff; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+
+/* ================= NAVBAR ================= */
+header {
+  position: fixed; top:0; width:100%; padding:28px 70px;
+  display:flex; justify-content:space-between; align-items:center;
+  background: rgba(0,0,0,0.7); backdrop-filter:blur(12px);
+  z-index:1000; border-bottom:1px solid rgba(255,255,255,0.06);
+}
+header img { height:70px; }
+nav a { margin-left:28px; font-weight:600; opacity:0.7; transition:0.3s; }
+nav a:hover { opacity:1; color:#e10600; }
+
+/* ================= BUTTONS ================= */
+.btn-primary {
+  background: linear-gradient(135deg,#e10600,#ff2e2e);
+  padding:12px 30px; border-radius:40px; font-weight:700;
+  transition:.3s; display:inline-block;
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 0 30px rgba(225,6,0,.7); }
+.btn-outline {
+  border:1px solid #fff; padding:10px 22px; border-radius:30px; font-size:13px;
+}
+.btn-secondary {
+  background:#e10600; padding:10px 20px; border-radius:30px; font-weight:700; text-transform:uppercase; transition:.3s; display:inline-block;
+}
+.btn-secondary:hover { transform:translateY(-3px); box-shadow:0 0 25px rgba(225,6,0,.6); }
+
+/* ================= HERO ================= */
+.hero {
+  min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative;
+  overflow:hidden;
+}
+.hero-content { text-align:center; z-index:2; max-width:800px; }
+.hero h1, .hero p, .hero-buttons { opacity:0; transform:translateY(40px); animation:fadeUp 1s forwards; }
+.hero h1 { font-size:90px; font-weight:800; margin-bottom:20px; letter-spacing:-2px; animation-delay:0.2s; }
+.hero p { font-size:22px; opacity:0.8; margin-bottom:40px; animation-delay:0.5s; }
+.hero-buttons { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; animation-delay:0.8s; }
+
+/* VIDEO BACKGROUND */
+.video-bg { position:fixed; inset:0; z-index:-1; overflow:hidden; }
+.video-bg video { width:100%; height:100%; object-fit:cover; filter:brightness(0.3) contrast(1.2); transform:translateZ(0); }
+
+/* ================= COLLECTION ================= */
+.collection { padding:140px 80px; }
+.collection h2 { text-align:center; font-size:42px; margin-bottom:60px; letter-spacing:2px; }
+
+/* CARD */
+.collection-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:40px; }
+.fashion-card {
+  position:relative; border-radius:18px; overflow:hidden; cursor:pointer; transition:.4s; background:#111;
+  box-shadow:0 0 15px rgba(0,0,0,0.5);
+}
+.fashion-card img { width:100%; height:420px; object-fit:cover; transition:.6s; display:block; }
+.fashion-card::after { content:""; position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%); }
+.fashion-info {
+  position:absolute; bottom:30px; left:30px; z-index:2; transform:translateY(30px); opacity:0; transition:.5s;
+}
+.fashion-info h3 { font-size:22px; margin-bottom:6px; }
+.fashion-info span { font-size:14px; opacity:0.6; }
+.card-buttons { display:flex; gap:10px; margin-top:12px; }
+.card-buttons a { font-size:12px; }
+
+/* Ribbon & shimmer */
+.ribbon {
+  position:absolute; top:15px; left:-5px; background:#e10600; padding:6px 14px;
+  font-size:12px; font-weight:700; transform:rotate(-20deg); z-index:5;
+  animation:shimmerRibbon 2s infinite linear;
+}
+@keyframes shimmerRibbon {
+  0% { box-shadow:0 0 5px #ff2e2e, 0 0 10px #e10600; }
+  50% { box-shadow:0 0 10px #ff2e2e, 0 0 20px #e10600; }
+  100% { box-shadow:0 0 5px #ff2e2e, 0 0 10px #e10600; }
+}
+
+/* Glimmer overlay */
+.fashion-card::before {
+  content:""; position:absolute; inset:0; pointer-events:none; background: linear-gradient(120deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%);
+  transform:translateX(-100%); transition:transform 0.8s;
+}
+.fashion-card:hover::before { transform:translateX(100%); }
+
+/* Hover effect */
+.fashion-card:hover img { transform:scale(1.08); }
+.fashion-card:hover .fashion-info { transform:translateY(0); opacity:1; }
+.fashion-card:hover { transform:translateY(-10px); box-shadow:0 20px 50px rgba(0,0,0,0.7); }
+
+/* ================= DESIGNERS ================= */
+.designers { padding:140px 80px; background:#060606; }
+.designers h2 { text-align:center; font-size:42px; margin-bottom:60px; letter-spacing:2px; }
+.designers-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:40px; }
+.designer-card {
+  text-align:center; background:#111; padding:30px; border-radius:16px; border:1px solid rgba(255,255,255,.05);
+  transition:.4s; opacity:0; transform:translateY(30px);
+}
+.designer-card img { width:120px; height:120px; object-fit:cover; border-radius:50%; margin-bottom:20px; }
+.designer-card:hover { transform:translateY(-8px) scale(1.02); border-color:#e10600; }
+.designer-card h3 { font-size:20px; margin-bottom:6px; }
+.designer-card p { font-size:14px; opacity:0.7; }
+
+/* ================= EVENTS ================= */
+.events-show { padding:140px 80px; }
+.events-show h2 { text-align:center; font-size:42px; margin-bottom:60px; letter-spacing:2px; }
+.events-carousel { display:flex; overflow-x:auto; gap:30px; padding-bottom:20px; scroll-behavior:smooth; }
+.events-card {
+  min-width:280px; background:#111; border-radius:16px; padding:30px; border:1px solid rgba(255,255,255,.05);
+  transition:.4s; flex-shrink:0; opacity:0; transform:translateY(30px);
+}
+.events-card h3 { font-size:20px; margin-bottom:10px; }
+.events-card p { font-size:14px; opacity:0.7; margin-bottom:15px; }
+.events-card a { margin-top:10px; display:inline-block; }
+
+/* ================= CTA ================= */
+.cta { padding:160px 80px; text-align:center; background:radial-gradient(circle at center, rgba(225,6,0,0.15), transparent 60%); }
+.cta h2 { font-size:48px; margin-bottom:40px; }
+
+/* ================= FOOTER ================= */
+footer { padding:60px 20px; text-align:center; opacity:0.5; font-size:14px; }
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+
+/* Responsive */
+@media(max-width:768px){
+  header{padding:16px 20px;}
+  .hero{padding:140px 24px;}
+  .hero h1{font-size:54px;}
+  .collection, .designers, .events-show, .cta{padding:100px 24px;}
+  .fashion-card img, .designer-card img{height:320px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="assets/logo.png" alt="100 Projects"></a>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="index.html#work">Projects</a>
+    <a href="index.html#Services">Services</a>
+    <a href="startproject.html" class="btn-outline">Start a Project</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>FASHION.</h1>
+    <p>Where culture meets runway. Curated fashion moments engineered to leave a mark.</p>
+    <div class="hero-buttons">
+      <a href="startproject.html" class="btn-primary">Start a Project</a>
+      <a href="#collection" class="btn-outline">View Collection</a>
+    </div>
+  </div>
+</section>
+
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="assets/Background.mp4" type="video/mp4">
+  </video>
+</div>
+
+<section class="collection" id="collection">
+  <h2>FEATURED COLLECTION</h2>
+  <div class="collection-grid">
+    <div class="fashion-card">
+      <span class="ribbon">EXCLUSIVE</span>
+      <img src="assets/fashion1.png" alt="Streetwear Launch">
+      <div class="fashion-info">
+        <h3>Streetwear Launch</h3>
+        <span>Johannesburg · 2025</span>
+        <div class="card-buttons">
+          <a href="#" class="btn-secondary">Reserve</a>
+          <a href="#" class="btn-secondary">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="fashion-card">
+      <span class="ribbon">NEW</span>
+      <img src="assets/fashion2.png" alt="Luxury Collab">
+      <div class="fashion-info">
+        <h3>Luxury Collab</h3>
+        <span>Cape Town · 2025</span>
+        <div class="card-buttons">
+          <a href="#" class="btn-secondary">Reserve</a>
+          <a href="#" class="btn-secondary">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="fashion-card">
+      <img src="assets/fashion3.png" alt="Pop-Up Showcase">
+      <div class="fashion-info">
+        <h3>Pop-Up Showcase</h3>
+        <span>Durban · 2024</span>
+        <div class="card-buttons">
+          <a href="#" class="btn-secondary">Reserve</a>
+          <a href="#" class="btn-secondary">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="designers">
+  <h2>FEATURED DESIGNERS</h2>
+  <div class="designers-grid">
+    <div class="designer-card">
+      <img src="assets/designer1.png" alt="Designer 1">
+      <h3>Jane Doe</h3>
+      <p>Streetwear innovator · Johannesburg</p>
+    </div>
+    <div class="designer-card">
+      <img src="assets/designer2.png" alt="Designer 2">
+      <h3>John Smith</h3>
+      <p>Luxury fashion specialist · Cape Town</p>
+    </div>
+    <div class="designer-card">
+      <img src="assets/designer3.png" alt="Designer 3">
+      <h3>Alice Lee</h3>
+      <p>Pop-up curator · Durban</p>
+    </div>
+  </div>
+</section>
+
+<section class="events-show">
+  <h2>FASHION EVENTS</h2>
+  <div class="events-carousel">
+    <div class="events-card">
+      <h3>Runway Gala</h3>
+      <p>Johannesburg · July 2026</p>
+      <a href="#" class="btn-secondary">Get Tickets</a>
+    </div>
+    <div class="events-card">
+      <h3>Pop-Up Boutique</h3>
+      <p>Cape Town · August 2026</p>
+      <a href="#" class="btn-secondary">Reserve Spot</a>
+    </div>
+    <div class="events-card">
+      <h3>Creator Showcase</h3>
+      <p>Durban · September 2026</p>
+      <a href="#" class="btn-secondary">Join Event</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>COLLABORATE WITH 100 PROJECTS IN FASHION</h2>
+  <a href="startproject.html" class="btn-primary">Start a Project</a>
+</section>
+
+  <!-- FOOTER -->
+ <footer>
+© 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
+</footer>
+
+<script>
+// Hero & Card animations on load
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.fashion-card, .designer-card, .events-card').forEach((el, i) => {
+    setTimeout(() => { el.style.opacity = 1; el.style.transform = "translateY(0)"; }, i*200);
+  });
+});
+
+// Events carousel scroll with wheel
+const carousel = document.querySelector('.events-carousel');
+carousel.addEventListener('wheel', (e) => { e.preventDefault(); carousel.scrollLeft += e.deltaY; });
+</script>
+
+</body>
+</html>

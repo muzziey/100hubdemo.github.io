@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Entertainment | 100 Projects Agency</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ====================== RESET ====================== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #0b0b0b;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+a { text-decoration:none; color:inherit; }
+
+/* ====================== NAV ====================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.65);
+  z-index: 1000;
+}
+
+header a.logo-link img {
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+header a.logo-link img:hover { transform: scale(1.05); }
+
+nav a {
+  margin-left: 28px;
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0.75;
+  transition: 0.3s;
+}
+
+nav a:hover { opacity: 1; color: #e10600; }
+
+/* ====================== HERO / VIDEO BG ====================== */
+.video-bg { position: fixed; inset:0; z-index:-1; }
+.video-bg video { width:100%; height:100%; object-fit:cover; filter:brightness(0.35); }
+
+/* ====================== INTRO VIDEO ====================== */
+.intro-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px;
+  gap: 30px;
+}
+
+.intro-video h2 {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.intro-video p {
+  font-size: 18px;
+  opacity: 0.85;
+  max-width: 800px;
+}
+
+.intro-video video {
+  width: 80%;
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+}
+
+.intro-video video:hover { transform: scale(1.02); }
+
+/* ====================== WORK SECTION ====================== */
+.work { padding: 120px 80px; }
+.work h2 { font-size: 36px; font-weight:800; margin-bottom:40px; }
+
+.work-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:24px;
+}
+
+.work-item {
+  position: relative;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition: transform 0.3s ease;
+}
+
+.work-item video {
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+.work-item:hover { transform: translateY(-6px); }
+
+/* ====================== VIDEO TITLE OVERLAY ====================== */
+.work-item .title-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  z-index: 2;
+}
+
+/* ====================== SOUND BUTTON ====================== */
+.sound-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.sound-btn:hover {
+  background: rgba(225,6,0,0.8);
+}
+
+/* ====================== PROCESS ====================== */
+.process { padding:120px 80px; background:#050505; }
+.process h2 { font-size:34px; margin-bottom:30px; }
+.process ol { list-style:none; }
+.process li { padding:14px 0; font-size:18px; border-bottom:1px solid rgba(255,255,255,0.05); }
+
+/* ====================== CTA ====================== */
+.cta { padding:120px 80px; text-align:center; }
+.cta h2 { font-size:42px; margin-bottom:30px; }
+
+/* ====================== FOOTER ====================== */
+footer { padding:40px; text-align:center; opacity:0.5; font-size:14px; }
+
+/* ====================== RESPONSIVE ====================== */
+@media (max-width:768px){
+  header { padding:16px 8px; }
+  .intro-video, .work, .process, .cta { padding:80px 24px; }
+  .intro-video h2 { font-size:32px; }
+  .intro-video p { font-size:16px; }
+  .intro-video video { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo-link"><img src="assets/logo.png" alt="100 Projects"></a>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="index.html#work">Projects</a>
+    <a href="index.html#Services">Services</a>
+    <a href="startproject.html" class="btn-outline">Start a Project</a>
+  </nav>
+</header>
+
+<!-- Hero background video -->
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="assets/entertainment/pepsi.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- Intro Video Section -->
+<section class="intro-video">
+  <h2>Experience Entertainment</h2>
+  <p>Watch our short introduction to see how we craft unforgettable cultural moments in music, film, and lifestyle.</p>
+  <video autoplay muted loop playsinline>
+    <source src="assets/IntroEntertainment.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- Entertainment Projects with clickable videos -->
+<section class="work">
+  <h2>ENTERTAINMENT PROJECTS</h2>
+  <div class="work-grid">
+    <div class="work-item">
+      <video autoplay muted loop playsinline>
+        <source src="assets/entertainment/h&m.mp4" type="video/mp4">
+      </video>
+      <div class="title-overlay">H&M Campaign</div>
+      <div class="sound-btn">&#128266;</div>
+    </div>
+
+    <div class="work-item">
+      <video autoplay muted loop playsinline>
+        <source src="assets/entertainment/maxhosa.mp4" type="video/mp4">
+      </video>
+      <div class="title-overlay">Maxhosa Campaign</div>
+      <div class="sound-btn">&#128266;</div>
+    </div>
+
+    <div class="work-item">
+      <video autoplay muted loop playsinline>
+        <source src="assets/entertainment/redbull.mp4" type="video/mp4">
+      </video>
+      <div class="title-overlay">RedBull Campaign</div>
+      <div class="sound-btn">&#128266;</div>
+    </div>
+
+     <div class="work-item">
+      <video autoplay muted loop playsinline>
+        <source src="assets/entertainment/g-star.mp4" type="video/mp4">
+      </video>
+      <div class="title-overlay">G-Star Campaign</div>
+      <div class="sound-btn">&#128266;</div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <h2>WHAT WE DO</h2>
+  <ol>
+    <li>Artist Rollouts & Visual Direction</li>
+    <li>Film + Music Campaigns</li>
+    <li>Live Events & Cultural Moments</li>
+    <li>Influencer & Creator Activation</li>
+    <li>Production to Distribution</li>
+  </ol>
+</section>
+
+<section class="cta">
+  <h2>READY TO LAUNCH SOMETHING REAL?</h2>
+  <a href="startproject.html" class="btn-primary">Start a Project</a>
+</section>
+
+  <!-- FOOTER -->
+ <footer>
+© 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
+</footer>
+
+<script>
+// Sound toggle & click
+document.querySelectorAll('.work-item').forEach(item => {
+  const video = item.querySelector('video');
+  const soundBtn = item.querySelector('.sound-btn');
+
+  soundBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    soundBtn.textContent = video.muted ? '🔇' : '🔊';
+  });
+
+  item.addEventListener('click', () => {
+    window.open(video.currentSrc, '_blank');
+  });
+});
+</script>
+
+</body>
+</html>
