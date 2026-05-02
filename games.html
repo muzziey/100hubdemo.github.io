@@ -1,880 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>100 HUB Games</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+ <!-- Google Font (Streetwear Clean) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
 
 <style>
-
-/* GLOBAL */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:'Montserrat',sans-serif;
-background:#000;
-color:white;
-overflow-x:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;background:#000;color:white;overflow-x:hidden;}
 
 /* VIDEO BACKGROUND */
-
-.video-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-}
-
-.video-bg video{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+.video-bg{position:fixed;inset:0;z-index:-2;}
+.video-bg video{width:100%;height:100%;object-fit:cover;filter:brightness(0.3);}
 
 /* NAV */
-
 .nav{
-
-position:fixed;
-top:0;
-width:100%;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;align-items:center;
 padding:10px 40px;
-
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(10px);
-
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(12px);
 z-index:1000;
+}
+.logo img{height:70px;}
+.nav a{margin-left:25px;color:white;text-decoration:none;}
 
+.play-btn{
+background:#e10600;border:none;padding:10px 20px;
+border-radius:25px;color:white;cursor:pointer;
 }
 
-.logo img{
-height:80px;
+/* AUTH */
+.auth-screen{
+position:fixed;
+top:50%;left:50%;
+transform:translate(-50%,-50%);
+z-index:1500;
+pointer-events:none;
+transition:0.4s;
 }
 
-.nav a{
-margin-left:25px;
-text-decoration:none;
+.auth-box{
+pointer-events:auto;
+background:url("assets/logo.png") center/180px no-repeat;
+
+padding:60px;
+border-radius:20px;
+text-align:center;
+width:350px;
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.auth-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#111;
 color:white;
 }
 
 /* HERO */
-
 .hero{
-padding-top:150px;
+padding-top:140px;
 text-align:center;
 }
+.hero h1{font-size:60px;font-weight:800;}
 
-.hero h1{
-font-size:60px;
-font-weight:800;
-}
-
-.player{
-margin-top:10px;
-font-size:18px;
-}
-
-/* XP BAR */
-
-.xp-bar{
-width:320px;
-height:8px;
-background:#222;
-margin:20px auto;
-border-radius:20px;
-overflow:hidden;
-}
-
-.xp-progress{
-height:100%;
-width:0%;
-background:#e10600;
-transition:.4s;
-}
-
-/* DASHBOARD */
-
-.dashboard{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-
-gap:20px;
-
-padding:40px;
-
-}
-
-.card{
-
-background:rgba(255,255,255,0.05);
-
-backdrop-filter:blur(12px);
-
-padding:25px;
-
-border-radius:15px;
-
-text-align:center;
-
-}
-
-/* GAMES */
-
-.games{
-
-padding:60px 40px;
-
-}
-
-.games-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
-gap:30px;
-
-}
-
-.game-card{
-
-background:rgba(255,255,255,0.05);
-
-padding:30px;
-
-border-radius:20px;
-
-text-align:center;
-
-transition:.3s;
-
-}
-
-.game-card:hover{
-
-transform:translateY(-6px);
-
-}
-
-.play-btn{
-
-background:#e10600;
-
-border:none;
-
-padding:12px 22px;
-
-border-radius:25px;
-
-color:white;
-
-cursor:pointer;
-
-}
-
-/* MODAL */
-
-.modal{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
-background:rgba(0,0,0,0.9);
-
+/* COMING SOON */
+#comingSoon{
 display:none;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:2000;
-
-}
-
-.modal-content{
-
-background:#111;
-
-padding:40px;
-
-border-radius:15px;
-
-width:420px;
-
 text-align:center;
-
+padding:120px 20px;
+animation:fadeIn 1s ease;
 }
 
-.close{
-
-cursor:pointer;
-
-float:right;
-
-}
-
-/* MEMORY */
-
-.memory-grid{
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:10px;
-
-margin-top:20px;
-
-}
-
-.memory-card{
-
-background:#222;
-
-padding:20px;
-
-font-size:22px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-}
-
-/* TARGET */
-
-.target{
-
-width:50px;
-
-height:50px;
-
-background:#e10600;
-
-border-radius:50%;
-
-position:absolute;
-
-cursor:pointer;
-
-}
-
-/* SHOP */
-
-.shop{
-
-padding:80px 40px;
-
-text-align:center;
-
-}
-
-.shop-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-gap:30px;
-
-margin-top:30px;
-
-}
-
-.shop-item{
-
-background:#111;
-
-padding:30px;
-
-border-radius:15px;
-
-}
-
-.shop-item button{
-
-margin-top:15px;
-
-background:#e10600;
-
+#comingSoon input{
+padding:14px;
+width:260px;
 border:none;
-
-padding:10px 20px;
-
-border-radius:20px;
-
+border-radius:10px;
+background:#111;
 color:white;
-
 }
 
-/* LEADERBOARD */
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
 
-.leaderboard{
-
-padding:60px;
-
+/* MAIN */
+#mainContent{
 text-align:center;
-
-}
-
-table{
-
-margin:auto;
-
-border-collapse:collapse;
-
-}
-
-td,th{
-
-padding:10px 20px;
-
-border-bottom:1px solid #333;
-
+padding:60px;
 }
 
 footer{
-
 padding:60px;
-
 text-align:center;
-
 color:#777;
+}
+/* ===== WHATSAPP HUB (FIXED + VISIBLE) ===== */
 
+.wa-hub {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999999; /* ABOVE EVERYTHING */
+  text-decoration: none;
+}
+
+/* pill design */
+.wa-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 18px;
+  border-radius: 999px;
+
+  background: rgba(0,0,0,0.6); /* darker for contrast on video */
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+
+  opacity: 1; /* FORCE VISIBLE */
+  transform: none; /* disable animation issues */
+
+  transition: all 0.3s ease;
+}
+
+/* icon */
+.wa-inner i {
+  font-size: 20px;
+  color: #d3254b;
+}
+
+/* hover */
+.wa-inner:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+/* glow effect */
+.wa-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(37,211,102,0.5);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.wa-inner:hover::after {
+  opacity: 1;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .wa-inner span {
+    display: none;
+  }
+
+  .wa-inner {
+    padding: 14px;
+  }
 }
 
 </style>
-
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
 <div class="video-bg">
-
-<video autoplay loop muted playsinline>
-
-<source src="assets/Background.mp4" type="video/mp4">
-
+<video autoplay muted loop playsinline>
+<source src="assets/Background.mp4">
 </video>
-
 </div>
 
+<!-- NAV -->
 <header class="nav">
-
-<div class="logo">
-
-<img src="assets/logo.png">
-
-</div>
-
+<div class="logo"><img src="assets/logo.png"></div>
 <nav>
-
-<a href="#">About</a>
-<a href="#">Projects</a>
-<a href="#">Services</a>
-
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="startproject.html">Services</a>
+<button onclick="logout()" class="play-btn" id="navBtn">Login</button>
 </nav>
-
 </header>
 
+<!-- AUTH -->
+<div id="authScreen" class="auth-screen">
+  <div class="auth-box">
+    <h2 id="authTitle">Sign In</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Continue</button>
+
+    <p>
+      Don’t have an account?
+      <span onclick="toggleAuth()" style="color:#e10600;cursor:pointer;">create account</span>
+    </p>
+  </div>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-
-<h1>100 HUB GAMES</h1>
-
-<div class="player">
-
-Coins: <span id="coins">0</span> | Level: <span id="level">1</span>
-
-</div>
-
-<div class="xp-bar">
-
-<div class="xp-progress" id="xpBar"></div>
-
-</div>
-
-<button class="play-btn" onclick="dailyReward()">Daily Reward</button>
-
+<h1>100 HUB</h1>
 </section>
 
-<section class="dashboard">
+<!-- COMING SOON -->
+<section id="comingSoon">
+<h1>Opening Soon</h1>
 
-<div class="card">
+<p style="opacity:0.7;margin:20px 0;">
+We’re building something powerful.<br>
+Leave your email to be first in.
+</p>
 
-<h3>Coins</h3>
+<input type="email" id="emailInput" placeholder="Enter your email">
+<br><br>
+<button class="play-btn" onclick="submitEmail()">Notify Me</button>
 
-<p id="coinsDash">0</p>
-
-</div>
-
-<div class="card">
-
-<h3>Level</h3>
-
-<p id="levelDash">1</p>
-
-</div>
-
-<div class="card">
-
-<h3>XP</h3>
-
-<p id="xpDash">0 / 100</p>
-
-</div>
-
+<p id="emailMsg" style="margin-top:15px;color:#22c55e;"></p>
 </section>
 
-<section class="games">
-
-<div class="games-grid">
-
-<div class="game-card">
-
-<h3>Quiz Game</h3>
-
-<button class="play-btn" onclick="openGame('quiz')">Play</button>
-
-</div>
-
-<div class="game-card">
-
-<h3>Memory Game</h3>
-
-<button class="play-btn" onclick="openGame('memory')">Play</button>
-
-</div>
-
-<div class="game-card">
-
-<h3>Speed Click</h3>
-
-<button class="play-btn" onclick="startSpeed()">Play</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="shop">
-
-<h2>Coin Shop</h2>
-
-<div class="shop-grid">
-
-<div class="shop-item">
-
-<h3>XP Boost</h3>
-
-<button onclick="buyXP()">Buy (200)</button>
-
-</div>
-
-<div class="shop-item">
-
-<h3>Double Coins</h3>
-
-<button onclick="buyBoost()">Buy (300)</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="leaderboard">
-
-<h2>Leaderboard</h2>
-
-<table id="leaderboard">
-
-<tr>
-
-<th>Rank</th>
-<th>Coins</th>
-
-</tr>
-
-</table>
-
-</section>
-
-<div class="modal" id="gameModal">
-
-<div class="modal-content">
-
-<span class="close" onclick="closeGame()">✖</span>
-
-<div id="gameArea"></div>
-
-</div>
-
+<!-- MAIN -->
+<div id="mainContent">
+<h2>Games Locked 🔒</h2>
+<p>You can explore the site or sign in anytime</p>
 </div>
 
 <footer>
-
-<p>© 2026 100 Projects Agency</p>
-
+© 2026 100 Projects Agency
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-/* PLAYER */
+/* ELEMENTS */
+const authScreen = document.getElementById("authScreen");
+const mainContent = document.getElementById("mainContent");
+const comingSoon = document.getElementById("comingSoon");
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+const emailInput = document.getElementById("emailInput");
+const emailMsg = document.getElementById("emailMsg");
+const authTitle = document.getElementById("authTitle");
+const navBtn = document.getElementById("navBtn");
 
-let player = JSON.parse(localStorage.getItem("player")) || {
+/* STATE */
+let isLogin = true;
 
-coins:0,
-xp:0,
-level:1,
-boost:false
-
+/* TOGGLE */
+function toggleAuth(){
+  isLogin = !isLogin;
+  authTitle.innerText = isLogin ? "Sign In" : "Sign Up";
 }
 
-function save(){
+/* LOGIN / SIGNUP */
+function login(){
 
-localStorage.setItem("player",JSON.stringify(player))
+  let user = username.value.trim();
+  let pass = password.value.trim();
 
+  if(!user || !pass) return alert("Enter details");
+
+  let users = JSON.parse(localStorage.getItem("users")) || {};
+
+  if(!isLogin){
+
+    if(users[user]) return alert("User exists");
+
+    users[user] = {password:pass};
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Account created!");
+    toggleAuth();
+    return;
+  }
+
+  if(users[user] && users[user].password === pass){
+
+    localStorage.setItem("currentUser", user);
+
+    authScreen.style.display = "none";
+    mainContent.style.display = "none";
+    comingSoon.style.display = "block";
+
+    navBtn.innerText = "Logout";
+
+  } else {
+    alert("Invalid login");
+  }
 }
 
-function updateUI(){
+/* AUTO LOGIN */
+window.onload = function(){
+  let currentUser = localStorage.getItem("currentUser");
 
-coins.innerText=player.coins
-coinsDash.innerText=player.coins
-
-level.innerText=player.level
-levelDash.innerText=player.level
-
-xpDash.innerText=player.xp+" / 100"
-
-xpBar.style.width=player.xp+"%"
-
+  if(currentUser){
+    authScreen.style.display = "none";
+    mainContent.style.display = "none";
+    comingSoon.style.display = "block";
+    navBtn.innerText = "Logout";
+  }
 }
 
-updateUI()
+/* LOGOUT */
+function logout(){
 
-function reward(c,x){
+  let currentUser = localStorage.getItem("currentUser");
 
-if(player.boost){
+  if(!currentUser){
+    authScreen.style.display = "block";
+    return;
+  }
 
-c*=2
-player.boost=false
+  localStorage.removeItem("currentUser");
 
+  authScreen.style.display = "block";
+  mainContent.style.display = "block";
+  comingSoon.style.display = "none";
+
+  navBtn.innerText = "Login";
 }
 
-player.coins+=c
-player.xp+=x
+/* EMAIL */
+function submitEmail(){
 
-if(player.xp>=100){
+  let email = emailInput.value.trim();
 
-player.level++
-player.xp=0
+  if(!email.includes("@")){
+    return alert("Enter valid email");
+  }
 
-}
+  let list = JSON.parse(localStorage.getItem("waitlist")) || [];
 
-save()
-updateUI()
-updateLeaderboard()
+  if(list.includes(email)){
+    emailMsg.innerText = "Already on the list 👀";
+    return;
+  }
 
-confetti()
+  list.push(email);
+  localStorage.setItem("waitlist", JSON.stringify(list));
 
-}
-
-/* DAILY */
-
-function dailyReward(){
-
-let today=new Date().toDateString()
-
-if(localStorage.getItem("daily")!==today){
-
-player.coins+=100
-
-localStorage.setItem("daily",today)
-
-save()
-updateUI()
-
-}
-
-}
-
-/* SHOP */
-
-function buyXP(){
-
-if(player.coins>=200){
-
-player.coins-=200
-player.xp+=50
-
-save()
-updateUI()
-
-}
-
-}
-
-function buyBoost(){
-
-if(player.coins>=300){
-
-player.coins-=300
-player.boost=true
-
-save()
-updateUI()
-
-}
-
-}
-
-/* LEADERBOARD */
-
-function updateLeaderboard(){
-
-let board=JSON.parse(localStorage.getItem("leaderboard")) || []
-
-board.push(player.coins)
-
-board.sort((a,b)=>b-a)
-
-board=board.slice(0,10)
-
-localStorage.setItem("leaderboard",JSON.stringify(board))
-
-let table=document.getElementById("leaderboard")
-
-table.innerHTML="<tr><th>Rank</th><th>Coins</th></tr>"
-
-board.forEach((score,i)=>{
-
-let row=table.insertRow()
-
-row.insertCell(0).innerText=i+1
-row.insertCell(1).innerText=score
-
-})
-
-}
-
-updateLeaderboard()
-
-/* MODAL */
-
-function openGame(type){
-
-gameModal.style.display="flex"
-
-if(type=="quiz"){
-
-gameArea.innerHTML=`
-
-<h2>Quiz</h2>
-
-<p>What does KPI stand for?</p>
-
-<input id="ans">
-
-<br><br>
-
-<button onclick="checkQuiz()">Submit</button>
-
-`
-
-}
-
-if(type=="memory"){
-
-startMemory()
-
-}
-
-}
-
-function closeGame(){
-
-gameModal.style.display="none"
-
-}
-
-/* QUIZ */
-
-function checkQuiz(){
-
-let ans=document.getElementById("ans").value
-
-if(ans.toLowerCase().includes("performance")){
-
-reward(50,20)
-
-closeGame()
-
-}
-
-}
-
-/* MEMORY */
-
-function startMemory(){
-
-let symbols=["🔥","🔥","⭐","⭐","💎","💎","🎯","🎯"]
-
-symbols.sort(()=>0.5-Math.random())
-
-let grid=document.createElement("div")
-
-grid.className="memory-grid"
-
-let first=null
-let second=null
-let lock=false
-let matches=0
-
-symbols.forEach(sym=>{
-
-let card=document.createElement("div")
-
-card.className="memory-card"
-
-card.onclick=function(){
-
-if(lock || card.innerHTML) return
-
-card.innerHTML=sym
-
-if(!first){
-
-first=card
-
-}else{
-
-second=card
-
-if(first.innerHTML===second.innerHTML){
-
-matches++
-
-first=null
-second=null
-
-if(matches===4){
-
-reward(60,30)
-
-closeGame()
-
-}
-
-}else{
-
-lock=true
-
-setTimeout(()=>{
-
-first.innerHTML=""
-second.innerHTML=""
-first=null
-second=null
-lock=false
-
-},800)
-
-}
-
-}
-
-}
-
-grid.appendChild(card)
-
-})
-
-gameArea.innerHTML=""
-gameArea.appendChild(grid)
-
-}
-
-/* SPEED */
-
-function startSpeed(){
-
-let clicks=0
-let time=10
-
-let interval=setInterval(()=>{
-
-let target=document.createElement("div")
-
-target.className="target"
-
-target.style.top=Math.random()*80+"vh"
-target.style.left=Math.random()*90+"vw"
-
-target.onclick=function(){
-
-clicks++
-target.remove()
-
-}
-
-document.body.appendChild(target)
-
-setTimeout(()=>target.remove(),800)
-
-},600)
-
-let timer=setInterval(()=>{
-
-time--
-
-if(time<=0){
-
-clearInterval(interval)
-clearInterval(timer)
-
-if(clicks>=10){
-
-reward(70,30)
-
-}
-
-}
-
-},1000)
-
+  emailMsg.innerText = "You're on the list 🚀";
 }
 
 </script>
+<!-- WHATSAPP HUB BUTTON (FINAL PLACEMENT) -->
+<a href="https://wa.me/277XXXXXXXXX?text=Hi%20100%20Projects%20Agency%2C%20I%20want%20to%20start%20a%20project"
+   class="wa-hub"
+   target="_blank">
+   <a href="https://www.instagram.com/100projectsmedia/"
+   class="wa-hub"
+   target="_blank">
 
+  <div class="wa-inner">
+    <i class="fab fa-whatsapp"></i>
+    <i class="fab fa-instagram"></i>
+    <span>Chat with us</span>
+  </div>
+
+</a>
 </body>
 </html>
