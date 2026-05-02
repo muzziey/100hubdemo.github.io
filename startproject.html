@@ -1,165 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start a Project | 100 Projects Agency</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apply | 100 Projects Agency</title>
 
+<!-- Fonts + Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat',sans-serif; }
-body { background:#000; color:#fff; overflow-x:hidden; }
-
-/* NAVBAR */
-.nav {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:10px 30px; position:fixed; width:100%; top:0; z-index:1000;
-  background:#050505fb; backdrop-filter: blur(6px);
-}
-.nav .logo img { height:60px; cursor:pointer; }
-.nav nav a { margin-left:25px; font-weight:500; text-decoration:none; color:#fff; transition:0.3s; }
-.nav nav a:hover { color:#e10600; }
-.nav nav a.btn-outline { border:1px solid #fff; padding:6px 14px; border-radius:20px; }
-.nav nav a.btn-outline:hover { background:#fff; color:#000; }
-
-/* HERO */
-.hero {
-  position:relative; width:100%; height:80vh;
-  display:flex; justify-content:center; align-items:center; text-align:center;
-  background: url('assets/hero-startproject.png') center center / cover no-repeat;
-}
-.hero::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:1; }
-.hero-content { position:relative; z-index:2; max-width:900px; }
-.hero h1 { font-size:70px; font-weight:800; margin-bottom:20px; }
-.hero p { font-size:20px; margin-bottom:40px; opacity:0.85; }
-.hero .btn-primary { background:#e10600; color:#fff; padding:15px 35px; border-radius:30px; font-weight:600; text-decoration:none; }
-.hero .btn-primary:hover { background:#fff; color:#000; }
-.hero .btn-outline { border:1px solid #fff; color:#fff; padding:15px 35px; border-radius:30px; text-decoration:none; }
-.hero .btn-outline:hover { background:#e10600; color:#fff; }
-.hero .hero-buttons { display:flex; gap:20px; justify-content:center; }
-
-/* FORM SECTION */
-.start-project {
-  padding:100px 60px;
-  max-width:1000px; margin:0 auto;
-}
-.start-project h2 {
-  text-align:center; font-size:48px; font-weight:800; margin-bottom:40px;
-}
-.project-form {
-  display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:40px;
-}
-.project-form input, .project-form select, .project-form textarea {
-  width:100%; padding:15px; border-radius:12px; border:none; background:#111; color:#fff; font-size:16px;
-}
-.project-form textarea { grid-column: span 2; resize:none; min-height:140px; }
-.project-form button {
-  grid-column: span 2; padding:15px 40px; border:none; border-radius:30px;
-  background:#e10600; color:#fff; font-weight:700; cursor:pointer; font-size:18px; transition:all 0.3s ease;
-}
-.project-form button:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(225,6,0,0.5); }
-
-/* SERVICES HIGHLIGHT */
-.services-highlight {
-  padding:100px 60px; background:#111; text-align:center;
-}
-.services-highlight h3 { font-size:36px; font-weight:800; margin-bottom:50px; }
-.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:40px; }
-.service-card { background:#000; padding:30px; border-radius:20px; transition:0.3s; }
-.service-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.6); }
-.service-card h4 { font-size:20px; margin-bottom:10px; }
-.service-card p { opacity:0.7; font-size:15px; }
-
-/* FOOTER */
-footer { padding:60px; text-align:center; opacity:0.6; font-size:14px; }
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero h1 { font-size:48px; }
-  .start-project { padding:60px 30px; }
-  .project-form { grid-template-columns:1fr; gap:20px; }
-  .services-highlight { padding:60px 30px; }
-}
-</style>
+<link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<!-- NAVBAR -->
+<!-- VIDEO BACKGROUND (same system as home) -->
+<div class="video-bg">
+  <video autoplay loop muted playsinline>
+    <source src="assets/Background.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- NAV (IDENTICAL TO HOME) -->
 <header class="nav">
-  <div class="logo">
-    <a href="index.html"><img src="assets/logo.png" alt="100 Projects Logo"></a>
+  <div class="logo-menu">
+    <img src="assets/logo.png" alt="Logo" id="menuToggle">
+
+    <div class="dropdown" id="dropdownMenu">
+      <a href="talent.html">View Talent</a>
+      <a href="events.html">Events</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="games.html">Games</a>
+      <a href="rewards.html">Rewards</a>
+    </div>
   </div>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="index.html#work">Our Work</a>
-    <a href="index.html#services">Services</a>
-    <a href="startproject.html" class="btn-outline">Start a Project</a>
+    <a href="talent.html" class="btn-outline">Our Projects</a>
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Start Your Project</h1>
-    <p>Tell us your vision and let us craft campaigns that captivate culture and attention.</p>
-    <div class="hero-buttons">
-      <a href="#form" class="btn-primary">Get Started</a>
-      <a href="#services" class="btn-outline">Our Services</a>
-    </div>
-  </div>
+<!-- HERO SECTION -->
+<section class="apply-hero">
+  <h1>Start a Project with  100 HUB as a Talent</h1>
+  <p>
+    We work with artists, creators, models, designers, and performers.
+    Apply to be part of a global creative network.
+  </p>
 </section>
 
 <!-- FORM SECTION -->
-<section class="start-project" id="form">
-  <h2>Project Submission</h2>
-  <form class="project-form">
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="text" placeholder="Company / Brand">
-    <select required>
-      <option value="">Select Project Type</option>
-      <option>Fashion Campaign</option>
-      <option>Event Activation</option>
-      <option>Talent Booking</option>
-      <option>Content Creation</option>
-      <option>Other</option>
-    </select>
-    <textarea placeholder="Project Details / Brief" required></textarea>
-    <button type="submit">Submit Project</button>
+<section class="apply-form">
+
+  <form>
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" placeholder="Your name" required />
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="Your email" required />
+    </div>
+
+    <div class="form-group">
+      <label>Talent Category</label>
+      <input type="text" placeholder="e.g Musician, Model, Designer" required />
+    </div>
+
+    <div class="form-group">
+      <label>Instagram / Portfolio Link</label>
+      <input type="text" placeholder="https://..." />
+    </div>
+
+    <div class="form-group">
+      <label>Tell Us About You</label>
+      <textarea rows="6" placeholder="What makes you unique?" required></textarea>
+    </div>
+
+    <button class="btn-primary" type="submit">Submit Application</button>
+
   </form>
+
+  <p class="disclaimer">
+    By applying you agree to be reviewed by 100 Projects Agency. Selected talent will be contacted directly.
+  </p>
+
 </section>
 
-<!-- SERVICES HIGHLIGHT -->
-<section class="services-highlight" id="services">
-  <h3>What We Can Do For You</h3>
-  <div class="services-grid">
-    <div class="service-card">
-      <h4>Campaign Direction</h4>
-      <p>Full creative strategy and campaign planning to make your brand unforgettable.</p>
-    </div>
-    <div class="service-card">
-      <h4>Visual Production</h4>
-      <p>Photography, videography, and content production tailored for your audience.</p>
-    </div>
-    <div class="service-card">
-      <h4>Talent Curation</h4>
-      <p>Connecting your brand with the right talent to amplify reach and cultural impact.</p>
-    </div>
-    <div class="service-card">
-      <h4>Event Activation</h4>
-      <p>Designing unforgettable events that create buzz and lasting impressions.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- FOOTER (SAME AS HOME) -->
 <footer>
 © 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
 </footer>
 
+<!-- MENU SCRIPT (same logic as home) -->
+<script>
+const toggle = document.getElementById("menuToggle");
+const dropdown = document.getElementById("dropdownMenu");
+
+toggle.addEventListener("click", () => {
+  dropdown.style.display =
+    dropdown.style.display === "flex" ? "none" : "flex";
+});
+</script>
+<!-- WHATSAPP HUB BUTTON (FINAL PLACEMENT) -->
+<a href="https://wa.me/277XXXXXXXXX?text=Hi%20100%20Projects%20Agency%2C%20I%20want%20to%20start%20a%20project"
+   class="wa-hub"
+   target="_blank">
+   <a href="https://www.instagram.com/100projectsmedia/"
+   class="wa-hub"
+   target="_blank">
+
+  <div class="wa-inner">
+    <i class="fab fa-whatsapp"></i>
+    <i class="fab fa-instagram"></i>
+    <span>Chat with us</span>
+  </div>
+
+</a>
 </body>
 </html>
