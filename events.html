@@ -5,115 +5,179 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Events | 100 Projects Agency</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="style.css">
 <style>
+
 /* ===== GLOBAL ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Montserrat',sans-serif; color:#fff; overflow-x:hidden; scroll-behavior:smooth; background:#000; }
-
-/* ===== FULL PAGE VIDEO ===== */
-.video-bg-full {
-  position:fixed; top:0; left:0;
-  width:100%; height:100%;
-  z-index:-1;
-  overflow:hidden;
-}
-.video-bg-full video {
-  width:100%; height:100%;
-  object-fit:cover;
-  filter: brightness(0.3) contrast(1.1);
+body {
+  font-family:'Montserrat',sans-serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-/* ===== NAV ===== */
+/* ===== VIDEO BACKGROUND (UNCHANGED) ===== */
+.video-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+.video-bg video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* NAV */
 .nav {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:10px 40px; position:fixed; width:100%; top:0; z-index:1000;
-  background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background: #050505fb;
 }
-.logo-menu { display:flex; align-items:center; position:relative; }
-.logo-menu img { height:80px; cursor:pointer; transition:0.3s; }
-.logo-menu img:hover { transform:scale(1.05); }
-.dropdown {
-  position:absolute; top:70px; left:0;
-  background: rgba(0,0,0,0.1); backdrop-filter: blur(12px);
-  border-radius:12px; padding:15px; display:none; flex-direction:column;
-  min-width:180px; box-shadow:0 10px 40px rgba(0,0,0,0.6);
-}
-.dropdown a { color:#fff; padding:8px 0; font-size:14px; opacity:0.8; transition:0.3s; }
-.dropdown a:hover { color:#e10600; opacity:1; }
-.nav nav { display:flex; align-items:center; }
-.nav nav a { font-weight:500; margin-left:30px; text-decoration:none; color:#fff; }
-.nav nav a.btn-outline { border:1px solid #fff; padding:8px 20px; border-radius:40px; font-weight:700; }
-.nav nav a.btn-outline:hover { background:#fff; color:#000; }
 
-/* ===== HERO ===== */
-.hero {
-  position:relative; width:100%; height:100vh;
-  display:flex; justify-content:center; align-items:center; text-align:center;
-  background: url('assets/logo.png') center center no-repeat;
-  background-size:cover; /* FULL hero section */
+/* LOGO */
+.logo img {
+  height: 80px;   /* adjust size */
+  width: auto;
+  display: block;
 }
-.hero::before {
-  content:""; position:absolute; inset:0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-  z-index:0;
+
+/* NAV LINKS */
+.nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 14px;
 }
-.hero-content { position:relative; z-index:2; max-width:800px; }
-.hero h1 { font-size:90px; font-weight:800; margin-bottom:20px; }
-.hero p { font-size:20px; margin-bottom:40px; color:#ccc; }
-.hero-buttons {
-  display:flex; gap:20px; justify-content:center;
+
+
+.nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 14px;
 }
-.hero-buttons a {
-  padding:12px 28px; border-radius:40px; font-weight:700; text-decoration:none;
-  transition:0.3s;
+/* ===== FEATURED EVENT ===== */
+.featured {
+  padding:120px 60px;
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:60px;
+  align-items:center;
 }
-.btn-primary { background: linear-gradient(135deg,#e10600,#ff2e2e); color:#fff; }
-.btn-primary:hover { opacity:0.9; }
-.btn-outline { border:1px solid #fff; color:#fff; }
-.btn-outline:hover { background:#e10600; }
 
-/* ===== EVENTS ===== */
-.events, .upcoming { padding:160px 80px; }
-.events h2, .upcoming h2 { text-align:center; font-size:42px; margin-bottom:80px; }
-.events-grid, .upcoming-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:40px; }
-.event-card { position:relative; border-radius:18px; overflow:hidden; cursor:pointer; transition:0.4s; }
-.event-card img { width:100%; height:420px; object-fit:cover; transition:0.6s; }
-.event-card::after { content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%); }
-.event-info { position:absolute; bottom:30px; left:30px; z-index:2; }
-.event-card:hover img { transform:scale(1.08); }
-.event-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.7); }
-.upcoming-card { background:#111; padding:40px; border-radius:16px; border:1px solid rgba(255,255,255,0.05); transition:0.4s; }
-.upcoming-card:hover { transform:translateY(-10px); border-color:#e10600; }
+.featured img {
+  width:90%;
+  border-radius:20px;
+  object-fit:cover;
+  box-shadow:0 30px 80px rgba(225,6,0,.2);
+}
 
-/* ===== CTA ===== */
-.cta { padding:180px 80px; text-align:center; }
+.featured h2 {
+  font-size:42px;
+  margin-bottom:15px;
+}
 
-/* ===== FOOTER ===== */
-footer { padding:60px; text-align:center; opacity:0.5; }
+.featured p {
+  opacity:.7;
+  line-height:1.6;
+}
 
+/* ===== EVENTS GRID ===== */
+.events {
+  padding:80px 60px;
+}
+
+.events h2 {
+  font-size:32px;
+  margin-bottom:30px;
+}
+
+.event-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.event-card {
+  background:#111;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.4s;
+  cursor:pointer;
+}
+
+.event-card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 20px 60px rgba(225,6,0,.25);
+}
+
+.event-card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.event-info {
+  padding:20px;
+}
+
+.event-info h3 {
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.event-info p {
+  font-size:13px;
+  opacity:.7;
+}
+
+
+/* FOOTER */
+footer {
+  background-color: #000; /* solid black background to cover the image */
+  padding: 40px;
+  text-align: center;
+  color: #777;           /* text color */
+  position: relative;    /* ensure it stays in flow */
+  z-index: 10;           /* make sure it's on top of any background */
+}
 /* ===== RESPONSIVE ===== */
-@media(max-width:768px){ .hero h1{font-size:54px;} .events,.upcoming,.cta{padding:100px 24px;} }
-@media(max-width:480px){ .hero h1{font-size:36px;} }
+@media(max-width:768px){
+  .hero-event h1{font-size:40px;}
+  .featured{grid-template-columns:1fr;}
+}
 
 </style>
 </head>
+
 <body>
 
-<!-- FULL PAGE VIDEO -->
-<div class="video-bg-full">
-  <video autoplay muted loop playsinline>
+<!-- VIDEO BACKGROUND (UNCHANGED) -->
+<div class="video-bg">
+  <video autoplay loop muted playsinline>
     <source src="assets/Background.mp4" type="video/mp4">
   </video>
 </div>
 
-<!-- NAV -->
+  <!-- NAVBAR -->
 <header class="nav">
   <div class="logo-menu">
-    <img src="assets/logo.png" id="menuToggle">
+    <img src="assets/logo.png" alt="Brand Logo" id="menuToggle">
+
     <div class="dropdown" id="dropdownMenu">
       <a href="talent.html">View Talent</a>
       <a href="events.html">Events</a>
@@ -123,82 +187,171 @@ footer { padding:60px; text-align:center; opacity:0.5; }
       <a href="rewards.html">Rewards</a>
     </div>
   </div>
+
   <nav>
     <a href="about.html">About</a>
-    <a href="index.html#work">Our Projects</a>
-    <a href="index.html#Services">Services</a>
-    <a href="startproject.html" class="btn-outline">Start Project</a>
+    <a href="#work">Our Projects</a>
+    <a href="startproject.html" class="btn-outline">Start a Event</a>
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>EVENTS</h1>
-    <p>Not gatherings. Cultural moments engineered to be remembered.</p>
-    <div class="hero-buttons">
-      <a href="startproject.html" class="btn-primary">Host an Event</a>
-      <a href="#upcoming" class="btn-outline">Upcoming Events</a>
+<!-- FEATURED EVENT -->
+<section class="featured">
+  <div>
+    <h2>NASTY C LIVE EXPERIENCE</h2>
+    <p>
+      A premium live performance activation blending music, fashion, and brand storytelling.
+      Designed for global campaigns and high-impact cultural moments.
+    </p>
+    <button class="hero-btn">Explore Event</button>
+  </div>
+  <img src="assets/Talent/1.png" alt="Featured Event">
+
+
+<!-- EVENTS GRID -->
+<section class="events" id="events">
+  <h2>Upcoming & Past Events</h2>
+
+  <div class="event-grid">
+
+    <div class="event-card">
+      <img src="assets/Talent/2.png">
+      <div class="event-info">
+        <h3>MNIMO BRAND LAUNCH</h3>
+        <p>Campaign • Johannesburg • 2026</p>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/Talent/3.png">
+      <div class="event-info">
+        <h3>SIIBU EP DROP LIVE</h3>
+        <p>Music Activation • Streaming Event</p>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/Talent/1.png">
+      <div class="event-info">
+        <h3>FASHION WEEK COLLAB</h3>
+        <p>Fashion • Runway • Brand Integration</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+</section>
+</section>
+<section class="sponsors" id="sponsors">
+  <h2>TRUSTED BY</h2>
+
+  <div class="sponsors-carousel">
+    <div class="sponsors-track">
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
+      <img src="SPONSORS/cotton first.jpg" alt="Sponsor 4">
+      <img src="SPONSORS/iqhawe.jpg" alt="Sponsor 5">
+      <img src="SPONSORS/sprite .png" alt="Sponsor 6">
+      <img src="SPONSORS/past.jpg" alt="Sponsor 7">
+      <img src="SPONSORS/Red-Bull-Emblema.png" alt="Sponsor 8"> 
+      <img src="SPONSORS/mr price.png" alt="Sponsor 9">
+      <!-- repeat first few logos to make the loop seamless -->
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
     </div>
   </div>
 </section>
+<!-- SOCIALS -->
+<section class="socials" id="socials">
 
-<!-- EVENTS -->
-<section class="events">
-<h2>PAST MOMENTS</h2>
-<div class="events-grid">
-  <div class="event-card">
-    <img src="assets/events/Mnimo.png">
-    <div class="event-info"><h3>Album Listening</h3></div>
+  <div class="social-container">
+
+    <!-- HEADER -->
+    <div class="social-header">
+      <h2>100 HUB COMMUNITY</h2>
+      <p>
+        Join a global network of talent, artists, and influencers.
+        Stay connected through our live platforms.
+      </p>
+    </div>
+
+    <!-- LIVE ACTIVITY STRIP -->
+    <div class="live-strip">
+
+      <div class="live-dot"></div>
+      <div class="live-text">Live Community Activity</div>
+
+      <div class="ticker">
+        <span> New creator joined • </span>
+        <span> Artist collaboration posted • </span>
+        <span> Influencer campaign launched • </span>
+        <span> Talent scouting active • </span>
+      </div>
+
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div class="social-links">
+
+      <a href="#" class="social instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+
+      <a href="#" class="social tiktok">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+
+      <a href="#" class="social youtube">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+
+      <a href="mailto:you@email.com" class="social email">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+
+    </div>
+
   </div>
-  <div class="event-card">
-    <img src="assets/events/G-Star  .png">
-    <div class="event-info"><h3>Brand Launch</h3></div>
-  </div>
-  <div class="event-card">
-    <img src="assets/events/ngeke festival.png">
-    <div class="event-info"><h3>Pop-Up Experience</h3></div>
-  </div>
-</div>
+
 </section>
 
-<!-- UPCOMING -->
-<section class="upcoming" id="upcoming">
-<h2>UPCOMING EVENTS</h2>
-<div class="upcoming-grid">
-  <div class="upcoming-card">
-    <h3>Street Culture Expo</h3>
-    <p>Johannesburg · July 2026</p>
-  </div>
-  <div class="upcoming-card">
-    <h3>Fashion Pop-Up</h3>
-    <p>Cape Town · August 2026</p>
-  </div>
-  <div class="upcoming-card">
-    <h3>Music Creator Night</h3>
-    <p>Durban · September 2026</p>
-  </div>
-</div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-<h2>LET'S BUILD A MOMENT.</h2>
-<a href="startproject.html" class="btn-primary">Start a Project</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-© 2026 100 Projects Agency
+<section>
+  <!-- FOOTER -->
+ <footer>
+© 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
 </footer>
+</section>
 
 <script>
+// MENU TOGGLE (same logic, cleaner)
 const menuToggle = document.getElementById('menuToggle');
 const dropdownMenu = document.getElementById('dropdownMenu');
+
 menuToggle.addEventListener('click', ()=>{
-  dropdownMenu.style.display = dropdownMenu.style.display==='flex'?'none':'flex';
+  dropdownMenu.style.display =
+    dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
 });
 </script>
+<!-- WHATSAPP HUB BUTTON (FINAL PLACEMENT) -->
+<a href="https://wa.me/277XXXXXXXXX?text=Hi%20100%20Projects%20Agency%2C%20I%20want%20to%20start%20a%20project"
+   class="wa-hub"
+   target="_blank">
+   <a href="https://www.instagram.com/100projectsmedia/"
+   class="wa-hub"
+   target="_blank">
 
+  <div class="wa-inner">
+    <i class="fab fa-whatsapp"></i>
+    <i class="fab fa-instagram"></i>
+    <span>Chat with us</span>
+  </div>
+
+</a>
 </body>
 </html>
