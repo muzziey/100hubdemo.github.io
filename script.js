@@ -43,3 +43,35 @@ document.addEventListener("click", (e) => {
     menu.style.display = "none";
   }
 });
+const steps = document.querySelectorAll(".process li");
+
+function setActiveStep(index) {
+  steps.forEach((step, i) => {
+    step.classList.toggle("active", i === index);
+  });
+}
+
+// click interaction (selection behavior)
+steps.forEach((step, index) => {
+  step.addEventListener("click", () => {
+    setActiveStep(index);
+  });
+});
+
+// scroll-based auto focus (Apple-style story mode)
+window.addEventListener("scroll", () => {
+  let closestIndex = 0;
+  let closestDistance = Infinity;
+
+  steps.forEach((step, index) => {
+    const rect = step.getBoundingClientRect();
+    const distance = Math.abs(rect.top - window.innerHeight / 2);
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestIndex = index;
+    }
+  });
+
+  setActiveStep(closestIndex);
+});
