@@ -6,9 +6,11 @@
 <title>Entertainment | 100 Projects Agency</title>
 
 <!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
 /* ====================== RESET ====================== */
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -22,37 +24,42 @@ body {
 
 a { text-decoration:none; color:inherit; }
 
-/* ====================== NAV ====================== */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 5px 20px;
+
+/* NAV */
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0,0,0,0.65);
+  padding: 5px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
   z-index: 1000;
+  background: #050505fb;
 }
 
-header a.logo-link img {
-  height: 80px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+/* LOGO */
+.logo img {
+  height: 80px;   /* adjust size */
+  width: auto;
+  display: block;
 }
 
-header a.logo-link img:hover { transform: scale(1.05); }
-
-nav a {
-  margin-left: 28px;
-  font-weight: 600;
-  font-size: 16px;
-  opacity: 0.75;
-  transition: 0.3s;
+/* NAV LINKS */
+.nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 14px;
 }
 
-nav a:hover { opacity: 1; color: #e10600; }
 
+.nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 14px;
+}
 /* ====================== HERO / VIDEO BG ====================== */
 .video-bg { position: fixed; inset:0; z-index:-1; }
 .video-bg video { width:100%; height:100%; object-fit:cover; filter:brightness(0.35); }
@@ -146,18 +153,61 @@ nav a:hover { opacity: 1; color: #e10600; }
   background: rgba(225,6,0,0.8);
 }
 
-/* ====================== PROCESS ====================== */
-.process { padding:120px 80px; background:#050505; }
-.process h2 { font-size:34px; margin-bottom:30px; }
-.process ol { list-style:none; }
-.process li { padding:14px 0; font-size:18px; border-bottom:1px solid rgba(255,255,255,0.05); }
+/* LEFT SIDE */
+.process li:nth-child(odd) {
+  left: 0;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* RIGHT SIDE */
+.process li:nth-child(even) {
+  left: 50%;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* timeline number bubble */
+.process li::before {
+  content: counter(step);
+  counter-increment: step;
+  position: absolute;
+  top: 40px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #e10600;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* LEFT circle position */
+.process li:nth-child(odd)::before {
+  right: -17px;
+}
+
+/* RIGHT circle position */
+.process li:nth-child(even)::before {
+  left: -17px;
+}
 
 /* ====================== CTA ====================== */
 .cta { padding:120px 80px; text-align:center; }
 .cta h2 { font-size:42px; margin-bottom:30px; }
 
-/* ====================== FOOTER ====================== */
-footer { padding:40px; text-align:center; opacity:0.5; font-size:14px; }
+/* FOOTER */
+footer {
+  background-color: #000; /* solid black background to cover the image */
+  padding: 40px;
+  text-align: center;
+  color: #777;           /* text color */
+  position: relative;    /* ensure it stays in flow */
+  z-index: 10;           /* make sure it's on top of any background */
+}
 
 /* ====================== RESPONSIVE ====================== */
 @media (max-width:768px){
@@ -167,18 +217,103 @@ footer { padding:40px; text-align:center; opacity:0.5; font-size:14px; }
   .intro-video p { font-size:16px; }
   .intro-video video { width: 100%; }
 }
+/* ===== WHATSAPP HUB (FIXED + VISIBLE) ===== */
+
+.wa-hub {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999999; /* ABOVE EVERYTHING */
+  text-decoration: none;
+}
+
+/* pill design */
+.wa-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 18px;
+  border-radius: 999px;
+
+  background: rgba(0,0,0,0.6); /* darker for contrast on video */
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+
+  opacity: 1; /* FORCE VISIBLE */
+  transform: none; /* disable animation issues */
+
+  transition: all 0.3s ease;
+}
+
+/* icon */
+.wa-inner i {
+  font-size: 20px;
+  color: #d3254b;
+}
+
+/* hover */
+.wa-inner:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+/* glow effect */
+.wa-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(37,211,102,0.5);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.wa-inner:hover::after {
+  opacity: 1;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .wa-inner span {
+    display: none;
+  }
+
+  .wa-inner {
+    padding: 14px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<header>
-  <a href="index.html" class="logo-link"><img src="assets/logo.png" alt="100 Projects"></a>
+<!-- NAV -->
+<header class="nav">
+  <div class="logo-menu">
+    <img src="assets/logo.png" id="menuToggle">
+    <div class="dropdown" id="dropdownMenu">
+      <a href="talent.html">View Talent</a>
+      <a href="events.html">Events</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="games.html">Games</a>
+      <a href="rewards.html">Rewards</a>
+    </div>
+  </div>
   <nav>
     <a href="about.html">About</a>
-    <a href="index.html#work">Projects</a>
-    <a href="index.html#Services">Services</a>
-    <a href="startproject.html" class="btn-outline">Start a Project</a>
+    <a href="#runway">Our Projects</a>
+    <a href="#Services">Services</a>
+    <a href="startproject.html" class="btn-outline">Start Project</a>
   </nav>
 </header>
 
@@ -236,27 +371,90 @@ footer { padding:40px; text-align:center; opacity:0.5; font-size:14px; }
   </div>
 </section>
 
-<section class="process">
-  <h2>WHAT WE DO</h2>
-  <ol>
-    <li>Artist Rollouts & Visual Direction</li>
-    <li>Film + Music Campaigns</li>
-    <li>Live Events & Cultural Moments</li>
-    <li>Influencer & Creator Activation</li>
-    <li>Production to Distribution</li>
-  </ol>
+<section class="sponsors" id="sponsors">
+  <h2>TRUSTED BY</h2>
+
+  <div class="sponsors-carousel">
+    <div class="sponsors-track">
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
+      <img src="SPONSORS/cotton first.jpg" alt="Sponsor 4">
+      <img src="SPONSORS/iqhawe.jpg" alt="Sponsor 5">
+      <img src="SPONSORS/sprite .png" alt="Sponsor 6">
+      <img src="SPONSORS/past.jpg" alt="Sponsor 7">
+      <img src="SPONSORS/Red-Bull-Emblema.png" alt="Sponsor 8"> 
+      <img src="SPONSORS/mr price.png" alt="Sponsor 9">
+      <!-- repeat first few logos to make the loop seamless -->
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
+    </div>
+  </div>
 </section>
 
-<section class="cta">
-  <h2>READY TO LAUNCH SOMETHING REAL?</h2>
-  <a href="startproject.html" class="btn-primary">Start a Project</a>
-</section>
+<!-- SOCIALS -->
+<section class="socials" id="socials">
 
+  <div class="social-container">
+
+    <!-- HEADER -->
+    <div class="social-header">
+      <h2>100 HUB COMMUNITY</h2>
+      <p>
+        Join a global network of talent, artists, and influencers.
+        Stay connected through our live platforms.
+      </p>
+    </div>
+
+    <!-- LIVE ACTIVITY STRIP -->
+    <div class="live-strip">
+
+      <div class="live-dot"></div>
+      <div class="live-text">Live Community Activity</div>
+
+      <div class="ticker">
+        <span> New creator joined • </span>
+        <span> Artist collaboration posted • </span>
+        <span> Influencer campaign launched • </span>
+        <span> Talent scouting active • </span>
+      </div>
+
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div class="social-links">
+
+      <a href="#" class="social instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+
+      <a href="#" class="social tiktok">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+
+      <a href="#" class="social youtube">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+
+      <a href="mailto:you@email.com" class="social email">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
   <!-- FOOTER -->
  <footer>
 © 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
 </footer>
-
+</section>
 <script>
 // Sound toggle & click
 document.querySelectorAll('.work-item').forEach(item => {
@@ -274,6 +472,20 @@ document.querySelectorAll('.work-item').forEach(item => {
   });
 });
 </script>
+<!-- WHATSAPP HUB BUTTON (FINAL PLACEMENT) -->
+<a href="https://wa.me/277XXXXXXXXX?text=Hi%20100%20Projects%20Agency%2C%20I%20want%20to%20start%20a%20project"
+   class="wa-hub"
+   target="_blank">
+   <a href="https://www.instagram.com/100projectsmedia/"
+   class="wa-hub"
+   target="_blank">
 
+  <div class="wa-inner">
+    <i class="fab fa-whatsapp"></i>
+    <i class="fab fa-instagram"></i>
+    <span>Chat with us</span>
+  </div>
+
+</a>
 </body>
 </html>
