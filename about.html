@@ -2,162 +2,409 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>About | 100 Projects Agency</title>
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat',sans-serif; }
-body { background:#000; color:#fff; overflow-x:hidden; position:relative; }
 
-/* ===== NAVBAR ===== */
-.nav { display:flex; justify-content:space-between; align-items:center; padding:10px 30px; position:fixed; width:100%; top:0; z-index:1000; background: rgba(0,0,0,0.65); border-bottom:1px solid rgba(255,255,255,0.05); }
-.nav .logo img { height:70px; }
-.nav nav a { color:#fff; text-decoration:none; margin-left:25px; font-weight:600; transition:0.2s; font-size:14px; }
-.nav nav a:hover { opacity:0.7; }
-
-.btn-outline { border:2px solid #fff; padding:12px 30px; border-radius:50px; font-weight:600; text-transform:uppercase; font-size:14px; position:relative; overflow:hidden; transition:all 0.4s ease; }
-.btn-outline::after { content:""; position:absolute; inset:0; background: linear-gradient(135deg,#e10600,#ff2e2e); transform: scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:50px; z-index:0; }
-.btn-outline span { position: relative; z-index:1; }
-.btn-outline:hover::after { transform: scaleX(1); }
-.btn-outline:hover { color:#fff; }
-
-.btn-primary { background: linear-gradient(135deg,#e10600,#ff2e2e); color:#fff; padding:14px 36px; border-radius:50px; font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:1px; box-shadow:0 4px 15px rgba(225,6,0,0.5); transition:all 0.3s ease; text-decoration:none; cursor:pointer; }
-.btn-primary:hover { transform: scale(1.05) translateY(-2px); box-shadow:0 8px 25px rgba(225,6,0,0.7); }
-
-/* ===== BACKGROUND VIDEO ===== */
-.video-bg {
-  position: fixed; inset:0; z-index:-3; overflow:hidden;
-}
-.video-bg video {
-  width:100%; height:100%; object-fit:cover; filter: brightness(0.3) contrast(1.1);
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
 }
 
-/* ===== HERO CLEAN ===== */
-.about-hero {
-  display:flex; flex-wrap:wrap; min-height:100vh;
-  padding:120px 30px 80px; position:relative; z-index:1;
+body{
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
 }
-.hero-left { flex:1; max-width:600px; z-index:2; color:#fff; position:relative; }
-.hero-left h1 { font-size:64px; font-weight:800; letter-spacing:-1px; background: linear-gradient(90deg,#e10600,#ff2e2e); -webkit-background-clip: text; color:transparent; margin-bottom:20px; }
-.hero-left p { font-size:18px; opacity:0.85; margin-bottom:30px; line-height:1.6; }
-.hero-buttons { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:40px; }
-.hero-right { flex:1; display:flex; justify-content:center; align-items:center; position:relative; }
-.hero-right img { max-width:100%; border-radius:20px; box-shadow:0 20px 60px rgba(225,6,0,0.4); transition: transform 0.5s ease; }
-.hero-right img:hover { transform:scale(1.05); }
 
-/* ===== INFO CARDS ===== */
-.info-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:50px; margin:60px 30px 100px; }
-.info-card { background: rgba(255,255,255,0.03); border-radius:20px; padding:30px; position:relative; overflow:hidden; transform: translateY(20px); opacity:0; transition: all 0.5s ease; }
-.info-card:hover { transform: translateY(-10px); box-shadow:0 20px 50px rgba(225,6,0,0.5); }
-.info-card h3 { font-size:14px; letter-spacing:2px; opacity:0.6; margin-bottom:16px; }
-.info-card p { font-size:16px; line-height:1.6; opacity:0.8; }
+/* ================= VIDEO BACKGROUND ================= */
+.video-bg{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+}
 
-/* ===== FOUNDERS PROFILES ===== */
-.founders { padding:80px 30px 140px; display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:40px; justify-items:center; }
-.founder-card { background: rgba(255,255,255,0.03); border-radius:20px; overflow:hidden; text-align:center; padding:30px; position:relative; transition: transform 0.5s ease, box-shadow 0.5s ease; }
-.founder-card:hover { transform: translateY(-10px); box-shadow:0 20px 50px rgba(225,6,0,0.5); }
-.founder-card img { width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:20px; transition: transform 0.5s ease; }
-.founder-card:hover img { transform: scale(1.05); }
-.founder-card h3 { font-size:18px; font-weight:700; margin-bottom:6px; }
-.founder-card span { font-size:14px; opacity:0.7; display:block; margin-bottom:15px; }
-.founder-card .socials { position:absolute; bottom:25px; left:50%; transform:translateX(-50%); display:flex; gap:15px; opacity:0; transition: opacity 0.4s; }
-.founder-card:hover .socials { opacity:1; }
-.founder-card .socials a { color:#fff; font-size:18px; transition: all 0.4s ease; transform: translateY(20px); animation: floatIn 0.5s forwards; }
-.founder-card .socials a:nth-child(1){ animation-delay:0.1s; }
-.founder-card .socials a:nth-child(2){ animation-delay:0.25s; }
-.founder-card .socials a:nth-child(3){ animation-delay:0.4s; }
-.founder-card .socials a:hover { color:#e10600; transform: scale(1.3); }
-@keyframes floatIn { to { transform: translateY(0); opacity:1; } }
+.video-bg video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.25) contrast(1.2);
+}
 
-.reveal { transform: translateY(0) !important; opacity:1 !important; }
+/* ================= NAVBAR (MATCH HOME) ================= */
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:5px 20px;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  background:#050505fb;
+}
 
+.logo-menu {
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.logo-menu img {
+  height:80px;
+  cursor:pointer;
+}
+
+.nav nav a {
+  margin-left:30px;
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  opacity:0.85;
+}
+
+.nav nav a:hover{
+  opacity:1;
+}
+
+/* dropdown */
+.dropdown{
+  position:absolute;
+  top:60px;
+  left:0;
+  background:rgba(0,0,0,0.95);
+  border:1px solid #ffffff14;
+  border-radius:12px;
+  padding:15px;
+  display:none;
+  flex-direction:column;
+  min-width:180px;
+}
+
+.dropdown a{
+  color:#fff;
+  text-decoration:none;
+  padding:8px 0;
+  font-size:14px;
+}
+
+/* ================= HERO (APPLE KEYNOTE STYLE) ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:140px 60px 80px;
+}
+
+.hero-content{
+  max-width:900px;
+}
+
+.hero h1{
+  font-size:72px;
+  font-weight:800;
+  line-height:1.05;
+  background:linear-gradient(90deg,#fff,#e10600);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  margin-top:20px;
+  font-size:18px;
+  opacity:0.75;
+  max-width:650px;
+}
+
+/* ================= APPLE STYLE SECTIONS ================= */
+.section{
+  padding:120px 60px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.section h2{
+  font-size:36px;
+  margin-bottom:20px;
+  letter-spacing:1px;
+}
+
+.section p{
+  font-size:16px;
+  opacity:0.75;
+  line-height:1.8;
+  max-width:800px;
+}
+
+/* GRID SYSTEM */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
+.card{
+  background:rgba(255,255,255,0.04);
+  padding:30px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#e10600;
+}
+
+/* ================= STORY HIGHLIGHT ================= */
+.highlight{
+  color:#e10600;
+  font-weight:700;
+}
+
+/* ================= SOCIALS (MATCH HOME) ================= */
+.socials{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.social-links{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.social{
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  text-decoration:none;
+  color:#fff;
+}
+
+/* FOOTER */
+footer {
+  background-color: #000; /* solid black background to cover the image */
+  padding: 40px;
+  text-align: center;
+  color: #777;           /* text color */
+  position: relative;    /* ensure it stays in flow */
+  z-index: 10;           /* make sure it's on top of any background */
+}
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:900px){
-  .about-hero { flex-direction:column; padding:100px 20px 60px; }
-  .hero-left { max-width:100%; text-align:center; }
-  .hero-left h1 { font-size:48px; }
-  .hero-left p { font-size:16px; }
-  .hero-buttons { justify-content:center; }
-  .hero-right { margin-top:40px; }
-  .info-grid { margin-top:40px; }
-  .founders { padding:60px 20px 100px; }
+  .hero h1{font-size:42px;}
+  .hero{padding:120px 30px;}
+  .section{padding:80px 30px;}
 }
-/* ====================== FOOTER ====================== */
-footer { padding: 60px; text-align: center; opacity: 0.5; font-size: 14px; }
+
 </style>
 </head>
+
 <body>
 
-<!-- BACKGROUND VIDEO -->
+<!-- VIDEO BACKGROUND -->
 <div class="video-bg">
   <video autoplay muted loop playsinline>
-    <source src="assets/Background.mp4" type="video/mp4">
+    <source src="assets/Background.mp4">
   </video>
 </div>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <header class="nav">
-  <div class="logo">
-    <a href="index.html"><img src="assets/logo.png" alt="100 Projects Logo"></a>
+
+  <div class="logo-menu">
+    <img src="assets/logo.png" id="menuToggle">
+
+    <div class="dropdown" id="dropdownMenu">
+      <a href="talent.html">View Talent</a>
+      <a href="events.html">Events</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="games.html">Games</a>
+    </div>
   </div>
+
   <nav>
     <a href="index.html">Home</a>
-    <a href="index.html#work">Our Work</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#contact" class="btn-outline"><span>Start a Project</span></a>
+    <a href="talent.html">our Talent</a>
+    <a href="startproject.html">Start Project</a>
   </nav>
+
 </header>
 
-<!-- HERO CLEAN -->
-<section class="about-hero">
-  <div class="hero-left">
-    <h1>We Control Attention, Not Just Campaigns</h1>
-    <p>100 Projects is a fashion-focused creative agency working across campaign direction,
-    visual production, and talent curation. Every project exists to position our clients
-    where attention already moves.</p>
-    <div class="hero-buttons">
-      <a href="talent.html" class="btn-primary">Meet Our Talent</a>
-      <a href="startproject.html" class="btn-outline"><span>Start a Project</span></a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <img src="assets/about-hero.png" alt="Fashion Visual" />
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>We Don’t Build Campaigns.<br>We Build Cultural Moments.</h1>
+    <p>
+      100 Projects is a creative system built around fashion, talent, entertainment and digital culture.
+      Every section of the platform exists to control attention, build identity, and launch movements.
+    </p>
   </div>
 </section>
 
-<!-- INFO CARDS -->
-<section class="info-grid">
-  <div class="info-card"> <h3>What We Do</h3> <p>Campaign direction, visual production, and talent curation for fashion and culture-driven brands operating in competitive markets.</p> </div>
-  <div class="info-card"> <h3>Our Approach</h3> <p>We don’t follow trends. We study timing, culture, and visual hierarchy. Every decision is deliberate. Anything unnecessary is removed.</p> </div>
-  <div class="info-card"> <h3>Who We Work With</h3> <p>We work with brands and talent that understand image is strategy. Speed, volume, or low-cost priorities are not our focus.</p> </div>
+<!-- WHAT IS 100 PROJECTS -->
+<section class="section">
+  <h2>What is 100 Projects?</h2>
+  <p>
+    100 Projects is not a traditional agency. It is a <span class="highlight">creative ecosystem</span> where brands,
+    artists, and culture collide. Everything on the homepage is part of one system:
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Talent System</h3>
+      <p>We curate artists, influencers, and creators into a controlled visual ecosystem.</p>
+    </div>
+
+    <div class="card">
+      <h3>Projects Hub</h3>
+      <p>Every campaign is treated like a cinematic release, not just marketing.</p>
+    </div>
+
+    <div class="card">
+      <h3>Fashion & Culture</h3>
+      <p>We merge streetwear, luxury, and digital identity into one visual language.</p>
+    </div>
+  </div>
 </section>
 
-<!-- FOUNDERS PROFILES -->
-<section class="founders">
-  <div class="founder-card">
-    <img src="assets/founder1.jpg" alt="CEO Image">
-    <h3>Khocy Pics</h3>
-    <span>Founder & CEO</span>
-    <div class="socials">
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
+<!-- HOW HOMEPAGE WORKS -->
+<section class="section">
+  <h2>How the System Works</h2>
+  <p>
+    The homepage is designed like an interactive film. Every scroll is intentional:
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Hero Section</h3>
+      <p>First impression of the brand identity and mission.</p>
+    </div>
+
+    <div class="card">
+      <h3>Work Loop</h3>
+      <p>Continuous motion showcase of talent and creative output.</p>
+    </div>
+
+    <div class="card">
+      <h3>Sponsors</h3>
+      <p>Real-world brand alignment and credibility system.</p>
+    </div>
+
+    <div class="card">
+      <h3>Social Network</h3>
+      <p>Live community feed that shows cultural movement in real time.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section">
+  <h2>Mission</h2>
+  <p>
+    To turn digital attention into physical influence.
+    We don’t advertise — we <span class="highlight">build relevance.</span>
+  </p>
+</section>
+
+<section class="sponsors" id="sponsors">
+  <h2>TRUSTED BY</h2>
+
+  <div class="sponsors-carousel">
+    <div class="sponsors-track">
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
+      <img src="SPONSORS/cotton first.jpg" alt="Sponsor 4">
+      <img src="SPONSORS/iqhawe.jpg" alt="Sponsor 5">
+      <img src="SPONSORS/sprite .png" alt="Sponsor 6">
+      <img src="SPONSORS/past.jpg" alt="Sponsor 7">
+      <img src="SPONSORS/Red-Bull-Emblema.png" alt="Sponsor 8"> 
+      <img src="SPONSORS/mr price.png" alt="Sponsor 9">
+      <!-- repeat first few logos to make the loop seamless -->
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
     </div>
   </div>
-  <div class="founder-card">
-    <img src="assets/founder2.jpg" alt="Creative Director Image">
-    <h3>Alex Designer</h3>
-    <span>Creative Director</span>
-    <div class="socials">
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
+</section>
+
+<!-- SOCIALS -->
+<section class="socials" id="socials">
+
+  <div class="social-container">
+
+    <!-- HEADER -->
+    <div class="social-header">
+      <h2>100 HUB COMMUNITY</h2>
+      <p>
+        Join a global network of talent, artists, and influencers.
+        Stay connected through our live platforms.
+      </p>
     </div>
+
+    <!-- LIVE ACTIVITY STRIP -->
+    <div class="live-strip">
+
+      <div class="live-dot"></div>
+      <div class="live-text">Live Community Activity</div>
+
+      <div class="ticker">
+        <span> New creator joined • </span>
+        <span> Artist collaboration posted • </span>
+        <span> Influencer campaign launched • </span>
+        <span> Talent scouting active • </span>
+      </div>
+
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div class="social-links">
+
+      <a href="#" class="social instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+
+      <a href="#" class="social tiktok">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+
+      <a href="#" class="social youtube">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+
+      <a href="mailto:you@email.com" class="social email">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+
+    </div>
+
   </div>
+
 </section>
   <!-- FOOTER -->
  <footer>
@@ -165,16 +412,22 @@ footer { padding: 60px; text-align: center; opacity: 0.5; font-size: 14px; }
 </footer>
 
 <script>
-// Scroll reveal effect
-const cards = document.querySelectorAll('.info-card');
-window.addEventListener('scroll', ()=>{
-  const triggerBottom = window.innerHeight*0.85;
-  cards.forEach(card=>{
-    const cardTop = card.getBoundingClientRect().top;
-    if(cardTop < triggerBottom) card.classList.add('reveal');
-  });
-});
-</script>
+const toggle = document.getElementById("menuToggle");
+const menu = document.getElementById("dropdownMenu");
 
+toggle.onclick = () => {
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+};
+</script>
+<!-- WHATSAPP HUB BUTTON (FINAL PLACEMENT) -->
+<a href="https://wa.me/277XXXXXXXXX?text=Hi%20100%20Projects%20Agency%2C%20I%20want%20to%20start%20a%20project"
+   class="wa-hub"
+   target="_blank">
+
+  <div class="wa-inner">
+    <i class="fab fa-whatsapp"></i>
+    <span>Chat with us</span>
+  </div>
+</a>
 </body>
 </html>
