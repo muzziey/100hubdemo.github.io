@@ -6,11 +6,14 @@
 <title>Talent | 100 Projects Agency</title>
 
 <!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+ <!-- Google Font (Streetwear Clean) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+  
 /* ===== GLOBAL ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Montserrat',sans-serif; background:#000; color:#fff; overflow-x:hidden; scroll-behavior:smooth; }
@@ -31,126 +34,268 @@ width:100%;
 height:100%;
 object-fit:cover;
 }
-/* ===== NAVBAR ===== */
+
+
+/* NAV */
 .nav {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:10px 40px; position:fixed; width:100%; top:0; z-index:1000;
-  background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background: #050505fb;
 }
-.logo-menu { display:flex; align-items:center; position:relative; }
-.logo-menu img { height:80px; cursor:pointer; transition:0.3s; }
-.logo-menu img:hover { transform:scale(1.05); }
-.dropdown {
-  position:absolute; top:70px; left:0;
-  background: rgba(0,0,0,0.100); backdrop-filter: blur(12px);
-  border-radius:12px; padding:15px; display:none; flex-direction:column;
-  min-width:180px; box-shadow:0 10px 40px rgba(0,0,0,0.6);
-  animation:fadeDown 0.3s ease;
-}
-.dropdown a { color:#fff; padding:8px 0; font-size:14px; opacity:0.8; transition:0.3s; }
-.dropdown a:hover { color:#e10600; opacity:1; }
-@keyframes fadeDown { from {opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
-.nav nav a { margin-left:30px; font-weight:500; transition:0.3s; }
-.nav nav a.btn-outline { border:1px solid #fff; padding:6px 14px; border-radius:20px; }
-.nav nav a.btn-outline:hover { background:#fff; color:#000; }
 
-/* ===== HERO ===== */
-.hero {
-  position:relative; width:100%; height:100vh;
-  display:flex; justify-content:center; align-items:center; text-align:center; overflow:hidden;
+/* LOGO */
+.logo img {
+  height: 80px;   /* adjust size */
+  width: auto;
+  display: block;
 }
-.hero video {
-  position:absolute; width:100%; height:100%; object-fit:cover; filter: brightness(0.45) contrast(1.2); z-index:0;
-}
-.hero::before {
-  content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); z-index:1;
-}
-.hero-content { position:relative; z-index:2; max-width:1000px; }
-.hero h1 { font-size:80px; font-weight:800; letter-spacing:6px; margin-bottom:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:6px;}
-.hero h1 span { display:inline-block; opacity:0; transform:translateY(50px); animation:letterAnim 0.6s forwards; }
-.hero h1 span:nth-child(1){animation-delay:0.1s;}
-.hero h1 span:nth-child(2){animation-delay:0.2s;}
-.hero h1 span:nth-child(3){animation-delay:0.3s;}
-.hero h1 span:nth-child(4){animation-delay:0.4s;}
-.hero h1 span:nth-child(5){animation-delay:0.5s;}
-.hero h1 span:nth-child(6){animation-delay:0.6s;}
-@keyframes letterAnim{ to{opacity:1; transform:translateY(0);} }
-.hero p { font-size:20px; margin-bottom:30px; color:#ccc; opacity:0; animation:fadeUp 1s 0.7s forwards; }
-@keyframes fadeUp{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-.hero .hero-buttons { display:flex; gap:20px; justify-content:center; opacity:0; animation:fadeUp 1s 1.2s forwards; }
-.hero .btn-primary, .hero .btn-outline {
-  padding:15px 35px; border-radius:30px; font-weight:600; letter-spacing:1px; transition:0.3s;
-}
-.hero .btn-primary { background:#e10600; color:#fff; box-shadow:0 0 20px rgba(225,6,0,0.6);}
-.hero .btn-primary:hover{ background:#fff; color:#000; box-shadow:0 0 25px rgba(225,6,0,0.8);}
-.hero .btn-outline { border:1px solid #fff; color:#fff; }
-.hero .btn-outline:hover { background:#e10600; color:#fff; }
 
-/* ===== FILTER BAR ===== */
-.filter-bar { display:flex; justify-content:center; gap:20px; padding:50px 20px; flex-wrap:wrap; }
-.filter-btn {
-  padding:12px 24px; border:1px solid #555; background:none; color:#fff; cursor:pointer;
-  letter-spacing:1px; transition:.3s; border-radius:12px;
+/* NAV LINKS */
+.nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 14px;
 }
-.filter-btn.active, .filter-btn:hover { background:#e10600; color:#fff; }
 
+
+.nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 14px;
+}
+/* ===== MINI HERO ===== */
+.mini-hero{
+  padding: 100px 30px 15px;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tag{
+  font-size: 15px;
+  letter-spacing: 4px;
+  opacity: 0.6;
+  margin-bottom: 15px;
+}
+
+.mini-hero h1{
+  font-size: 50px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg,#0a0606,#412525);
+}
+
+.sub{
+  font-size: 15px;
+  opacity: 0.7;
+  max-width: 650px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* CATEGORY PILLS */
+.categories{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cat{
+  padding: 10px 18px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+
+.cat:hover{
+  transform: translateY(-3px);
+  border-color: #e10600;
+  box-shadow: 0 10px 30px rgba(225,6,0,0.2);
+}
+.cat.active{
+  border-color:#e10600;
+  background:rgba(225,6,0,0.1);
+  box-shadow:0 10px 30px rgba(225,6,0,0.25);
+}
 /* ===== RUNWAY GRID ===== */
-.runway { display:flex; overflow-x:auto; padding:100px 60px; gap:40px; scroll-behavior:smooth; perspective:1000px; }
-.runway::-webkit-scrollbar{display:none;}
-.work-item {
-  position:relative; flex:0 0 280px; border-radius:16px; overflow:hidden; cursor:pointer;
-  opacity:0; transform:translateY(50px) scale(.9); transition:transform .3s ease, opacity .5s ease, box-shadow .3s;
-  will-change:transform;
+.runway-grid{
+  display:flex;
+  flex-direction:column;
+  gap:80px;
+  padding:120px 60px;
+}
+
+/* CAMPAIGN BLOCK */
+.campaign-block{
+  position:relative;
+}
+
+/* CAMPAIGN TITLE OVERLAY */
+.campaign-title{
+  position:absolute;
+  top:-40px;
+  left:10px;
+  font-size:12px;
+  letter-spacing:3px;
+  opacity:0.6;
+}
+
+.campaign-name{
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-top:5px;
+}
+
+/* ROW BASE */
+.runway-row{
+  display:flex;
+  gap:40px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:20px;
+  scrollbar-width:none;
+}
+.runway-row::-webkit-scrollbar{display:none;}
+
+.work-item{
+  flex:0 0 280px;
+  height:380px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
   background:#111;
+  transition:0.5s;
 }
-.work-item.reveal{animation:cardReveal 0.8s ease forwards;}
-@keyframes cardReveal{ to{opacity:1; transform:translateY(0) scale(1);} }
-.work-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
-.work-item:hover img{ transform:scale(1.15);}
-.work-item::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
-  opacity:0; transition:.4s;
+
+.work-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:1s;
 }
-.work-item:hover::after{opacity:1;}
-.talent-info{
-  position:absolute; bottom:25px; left:25px; opacity:0; transform:translateY(20px);
-  transition:.4s; color:#fff;
+
+.work-item:hover img{transform:scale(1.1);}
+.work-item:hover{transform:translateY(-5px);}
+
+/* UNIQUE ROW FEEL */
+.campaign-1 .work-item{flex:0 0 300px;}
+.campaign-2 .work-item{flex:0 0 240px;}
+.campaign-3 .work-item{flex:0 0 320px;}
+.campaign-4 .work-item{flex:0 0 220px;}
+.campaign-5 .work-item{flex:0 0 300px;}
+.campaign-6 .work-item{flex:0 0 360px;height:450px;}
+.campaign-7 .work-item{flex:0 0 200px;height:260px;}
+.campaign-8 .work-item:nth-child(odd){flex:0 0 340px;}
+.campaign-8 .work-item:nth-child(even){flex:0 0 220px;}
+
+
+/* FOOTER */
+footer {
+  background-color: #000; /* solid black background to cover the image */
+  padding: 40px;
+  text-align: center;
+  color: #777;           /* text color */
+  position: relative;    /* ensure it stays in flow */
+  z-index: 10;           /* make sure it's on top of any background */
 }
-.work-item:hover .talent-info{opacity:1; transform:translateY(0);}
-.talent-name{font-weight:700; letter-spacing:2px; font-size:16px;}
-.talent-role{font-size:13px; opacity:.8;}
-
-/* 3D tilt */
-.work-item:hover{ box-shadow:0 25px 45px rgba(225,6,0,.4); }
-
-/* ===== MODAL ===== */
-.modal{
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,.95); display:flex; align-items:center; justify-content:center;
-  flex-direction:column; opacity:0; pointer-events:none; transition:.4s; z-index:2000; backdrop-filter: blur(5px);
-}
-.modal.active{opacity:1; pointer-events:auto;}
-.modal img{max-width:70%; max-height:70%; margin-bottom:20px; border-radius:10px; box-shadow:0 0 25px rgba(225,6,0,0.5);}
-.modal-info{text-align:center; color:#fff;}
-.modal h2{margin-bottom:10px; font-weight:800;}
-.modal button{margin-top:20px; padding:12px 30px; border:none; background:#e10600; color:#fff; cursor:pointer; border-radius:20px; font-weight:600; transition:.3s;}
-.modal button:hover{ background:#fff; color:#000; }
-.close{position:absolute; top:40px; right:60px; font-size:40px; cursor:pointer;}
-
-/* ===== BOOKING ===== */
-.booking{ padding:100px 40px; text-align:center; background:#111; }
-.booking h2{font-size:40px; margin-bottom:20px; font-weight:800;}
-.booking button{padding:15px 50px; border:none; background:#e10600; color:#fff; font-weight:600; cursor:pointer; border-radius:30px; transition:.3s; box-shadow:0 0 25px rgba(225,6,0,.5);}
-.booking button:hover{background:#fff;color:#000;}
-
-/* ===== FOOTER ===== */
-footer{text-align:center; padding:60px; opacity:.6; font-size:14px;}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){ .hero h1{font-size:48px;} .runway{padding:60px 20px;} .work-item{flex:0 0 240px;} }
 @media(max-width:480px){ .runway{flex-direction:column;gap:20px;} .hero h1{font-size:36px;} }
+/* ===== WHATSAPP HUB (FIXED + VISIBLE) ===== */
 
+.wa-hub {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999999; /* ABOVE EVERYTHING */
+  text-decoration: none;
+}
+
+/* pill design */
+.wa-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 18px;
+  border-radius: 999px;
+
+  background: rgba(0,0,0,0.6); /* darker for contrast on video */
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+
+  opacity: 1; /* FORCE VISIBLE */
+  transform: none; /* disable animation issues */
+
+  transition: all 0.3s ease;
+}
+
+/* icon */
+.wa-inner i {
+  font-size: 20px;
+  color: #d3254b;
+}
+
+/* hover */
+.wa-inner:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+/* glow effect */
+.wa-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(37,211,102,0.5);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.wa-inner:hover::after {
+  opacity: 1;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .wa-inner span {
+    display: none;
+  }
+
+  .wa-inner {
+    padding: 14px;
+  }
+}
 </style>
 </head>
 <body>
@@ -163,10 +308,11 @@ footer{text-align:center; padding:60px; opacity:.6; font-size:14px;}
 </video>
 
 </div>
-<!-- NAV -->
+  <!-- NAVBAR -->
 <header class="nav">
   <div class="logo-menu">
-    <img src="assets/logo.png" id="menuToggle">
+    <img src="assets/logo.png" alt="Brand Logo" id="menuToggle">
+
     <div class="dropdown" id="dropdownMenu">
       <a href="talent.html">View Talent</a>
       <a href="events.html">Events</a>
@@ -176,92 +322,260 @@ footer{text-align:center; padding:60px; opacity:.6; font-size:14px;}
       <a href="rewards.html">Rewards</a>
     </div>
   </div>
+
   <nav>
     <a href="about.html">About</a>
-    <a href="#runway">Our Projects</a>
+    <a href="#work">Our Projects</a>
     <a href="#Services">Services</a>
-    <a href="startproject.html" class="btn-outline">Start Project</a>
+    <a href="startproject.html" class="btn-outline">Start a Project</a>
   </nav>
 </header>
+<!-- MINI HERO -->
+<section class="mini-hero">
+  <div class="hero-content">
+    <p class="tag">100 PROJECTS AGENCY</p>
+    <h1>We Build Culture Through Talent</h1>
+    <p class="sub">
+      From music artists to fashion icons, creators, and campaign talent —
+      we connect brands to real cultural power.
+    </p>
 
-<!-- HERO -->
-<section class="hero">
-<video autoplay muted loop>
-<source src="assets/fashion.mp4" type="video/mp4">
-</video>
-<div class="hero-content">
-<h1><span>T</span><span>A</span><span>L</span><span>E</span><span>N</span><span>T</span></h1>
-<p>Campaign-ready faces. Culture-forward presence.</p>
-<div class="hero-buttons">
-<a href="#runway" class="btn-primary">View Talent</a>
-<a href="startproject.html" class="btn-outline">Book Talent</a>
+<div class="categories">
+
+  <div class="cat active" data-filter="all">All Campaigns</div>
+
+  <div class="cat" data-filter="campaign-1">G-Star Raw</div>
+  <div class="cat" data-filter="campaign-2">MININO Events</div>
+  <div class="cat" data-filter="campaign-3">Pantone Sundays</div>
+  <div class="cat" data-filter="campaign-4">Alcohol Visuals</div>
+  <div class="cat" data-filter="campaign-5">Creator Drop</div>
+  <div class="cat" data-filter="campaign-6">Editorial Elite</div>
+  <div class="cat" data-filter="campaign-7">Influencer Grid</div>
+  <div class="cat" data-filter="campaign-8">Culture Drop</div>
+
 </div>
 </div>
 </section>
+<!-- RUNWAY GRID (5 ROWS STYLE) -->
+<section class="runway-grid">
 
-<!-- FILTER -->
-<div class="filter-bar">
-<button class="filter-btn active" onclick="filterTalent('all',this)">All</button>
-<button class="filter-btn" onclick="filterTalent('music',this)">Music</button>
-<button class="filter-btn" onclick="filterTalent('fashion',this)">Fashion</button>
-<button class="filter-btn" onclick="filterTalent('campaign',this)">Campaign</button>
-</div>
+  <!-- CAMPAIGN 1 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">G-STAR RAW</div>
 
-<!-- RUNWAY -->
-<section class="work">
-<div class="runway" id="runway">
-<!-- Example Talent Card -->
-<div class="work-item music" data-size="large" onclick="openTalent(this,'NASTY C','Artist')">
-<img src="assets/Talent/1.png">
-<div class="talent-info"><div class="talent-name">NASTY C</div><div class="talent-role">Artist</div></div>
-</div>
-<div class="work-item campaign" data-size="medium" onclick="openTalent(this,'LEGO','Campaign')">
-<img src="assets/Talent/2.png">
-<div class="talent-info"><div class="talent-name">LEGO</div><div class="talent-role">Campaign</div></div>
-</div>
-<div class="work-item music" data-size="small" onclick="openTalent(this,'SIIBU','EP Launch')">
-<img src="assets/Talent/3.png">
-<div class="talent-info"><div class="talent-name">SIIBU</div><div class="talent-role">Artist</div></div>
-</div>
-<div class="work-item fashion" data-size="large" onclick="openTalent(this,'DESIREE','Fashion Talent')">
-<img src="assets/Talent/5.png">
-<div class="talent-info"><div class="talent-name">DESIREE</div><div class="talent-role">Fashion</div></div>
-</div>
-<div class="work-item fashion" data-size="medium" onclick="openTalent(this,'G-STAR RAW','Fashion Brand')">
-<img src="assets/Talent/7.png">
-<div class="talent-info"><div class="talent-name">G-STAR RAW</div><div class="talent-role">Fashion</div></div>
-</div>
-<div class="work-item campaign" data-size="small" onclick="openTalent(this,'THE PULSE','Campaign')">
-<img src="assets/Talent/8.png">
-<div class="talent-info"><div class="talent-name">THE PULSE</div><div class="talent-role">Campaign</div></div>
-</div>
-</div>
+    <div class="runway-row campaign-1">
+      <div class="work-item"><img src="picctures/@g-star raw/2.png"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/100 Landing Pages (7).png"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/3.png"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/IMG_1757.JPG"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/IMG_1759.JPG"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/IMG_1784.JPG"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/IMG_1832.JPG"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/IMG_1833.JPG"></div><div class="work-item"><img src="picctures/@g-star raw/1.png"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/IMG_1837.JPG"></div>
+      <div class="work-item"><img src="picctures/@g-star raw/IMG_1853.JPG"></div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN 2 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">MNINO EVENTS</div>
+
+    <div class="runway-row campaign-2">
+      <div class="work-item"><img src="picctures/@mnino/2.png"></div>
+      <div class="work-item"><img src="picctures/@mnino/4.png"></div>
+      <div class="work-item"><img src="picctures/@mnino/7.png"></div>
+      <div class="work-item"><img src="picctures/@mnino/9.png"></div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN 3 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">PANTONE SUNDAYS</div>
+
+    <div class="runway-row campaign-3">
+      <div class="work-item"><img src="picctures/@pantone sunday/7.png"></div>
+      <div class="work-item"><img src="picctures/@pantone sunday/5.png"></div>
+      <div class="work-item"><img src="picctures/@pantone sunday/PantoneSundays(2of331).jpg"></div>
+      <div class="work-item"><img src="picctures/@pantone sunday/PantoneSundays(329of331).jpg"></div>
+      <div class="work-item"><img src="picctures/@pantone sunday/PantoneSundays(16of331).jpg"></div>
+      <div class="work-item"><img src="picctures/@pantone sunday/PantoneSundays(144of331).jpg"></div>
+      <div class="work-item"><img src="picctures/@pantone sunday/PantoneSundays(24of331).jpg"></div>
+      <div class="work-item"><img src="picctures/@pantone sunday/PantoneSundays(194of331).jpg"></div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN 4 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">ALCOHOL VISUALS</div>
+
+    <div class="runway-row campaign-4">
+      <div class="work-item"><img src="picctures/@alcohol/5.png"></div>
+      <div class="work-item"><img src="picctures/@alcohol/1.png"></div>
+      <div class="work-item"><img src="picctures/@alcohol/3.png"></div>
+      <div class="work-item"><img src="picctures/@alcohol/2.png"></div>
+      <div class="work-item"><img src="picctures/@alcohol/4.png"></div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN 5 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">CREATOR DROP</div>
+
+    <div class="runway-row campaign-5">
+      <div class="work-item"><img src="picctures/@grade/3.png"></div>
+      <div class="work-item"><img src="picctures/@grade/1.png"></div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN 6 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">EDITORIAL ELITE</div>
+
+    <div class="runway-row campaign-6">
+      <div class="work-item"><img src="picctures/@life-size lego/5.png"></div>
+      <div class="work-item"><img src="picctures/@life-size lego/IMG_0317.jpg"></div>
+      <div class="work-item"><img src="picctures/@life-size lego/IMG_0333.jpg"></div>
+      <div class="work-item"><img src="picctures/@life-size lego/100 Landing Pages (1).png"></div>
+      <div class="work-item"><img src="picctures/@life-size lego/3.png"></div>     
+      <div class="work-item"><img src="picctures/@life-size lego/4.png"></div>
+      <div class="work-item"><img src="picctures/@life-size lego/IMG_0320.jpg"></div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN 7 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">INFLUENCER GRID</div>
+
+    <div class="runway-row campaign-7">
+      <div class="work-item"><img src="picctures/creators/6.png"></div>
+      <div class="work-item"><img src="picctures/creators/7.png"></div>
+      <div class="work-item"><img src="picctures/creators/14.png"></div>
+      <div class="work-item"><img src="picctures/creators/12.png"></div>
+      <div class="work-item"><img src="picctures/creators/9.png"></div>
+      <div class="work-item"><img src="picctures/creators/8.png"></div>
+      <div class="work-item"><img src="picctures/creators/4.png"></div>
+      <div class="work-item"><img src="picctures/creators/3.png"></div>
+      <div class="work-item"><img src="picctures/creators/2.png"></div>      
+      <div class="work-item"><img src="picctures/creators/5.png"></div>
+      <div class="work-item"><img src="picctures/creators/11.png"></div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN 8 -->
+  <div class="campaign-block">
+    <div class="campaign-title">CAMPAIGN</div>
+    <div class="campaign-name">CULTURE DROP</div>
+
+    <div class="runway-row campaign-8">
+      <div class="work-item"><img src="picctures/@nasty c/1.png"></div>
+      <div class="work-item"><img src="picctures/@nasty c/4.jpg"></div>
+      <div class="work-item"><img src="picctures/@nasty c/IMG_1530.jpg"></div>
+            <div class="work-item"><img src="picctures/@nasty c/IMG_1978.jpg"></div>
+      <div class="work-item"><img src="picctures/@nasty c/SaveInta.com_589933355_18549725797060435_6768982345143015310_n.jpg"></div>
+      <div class="work-item"><img src="picctures/@nasty c/SaveInta.com_589385553_18549725788060435_4856096688673036639_n.jpg"></div>
+            <div class="work-item"><img src="picctures/@nasty c/IMG_1786.jpg"></div>
+      <div class="work-item"><img src="picctures/@nasty c/SaveInta.com_589633387_18549725860060435_4247487290946544573_n.jpg"></div>
+      <div class="work-item"><img src="picctures/@nasty c/SaveInta.com_589820454_18549725869060435_4286694742766199173_n.jpg"></div>
+            <div class="work-item"><img src="picctures/@nasty c/SaveInta.com_589903738_18549725761060435_4218728194446075264_n.jpg"></div>
+      <div class="work-item"><img src="picctures/@nasty c/SaveInta.com_589933355_18549725797060435_6768982345143015310_n.jpg"></div>
+      <div class="work-item"><img src="picctures/@nasty c/SaveInta.com_589174886_18549725806060435_6690641110790391075_n.jpg"></div>
+    </div>
+  </div>
+
+</section>
+<section class="sponsors" id="sponsors">
+  <h2>TRUSTED BY</h2>
+
+  <div class="sponsors-carousel">
+    <div class="sponsors-track">
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
+      <img src="SPONSORS/cotton first.jpg" alt="Sponsor 4">
+      <img src="SPONSORS/iqhawe.jpg" alt="Sponsor 5">
+      <img src="SPONSORS/sprite .png" alt="Sponsor 6">
+      <img src="SPONSORS/past.jpg" alt="Sponsor 7">
+      <img src="SPONSORS/Red-Bull-Emblema.png" alt="Sponsor 8"> 
+      <img src="SPONSORS/mr price.png" alt="Sponsor 9">
+      <!-- repeat first few logos to make the loop seamless -->
+      <img src="SPONSORS/348.jpg" alt="Red Bull">
+      <img src="SPONSORS/balatron.jpg" alt="Sponsor 2">
+      <img src="SPONSORS/Converse-Logo.png" alt="Sponsor 3">
+    </div>
+  </div>
 </section>
 
-<!-- MODAL -->
-<div class="modal" id="talentModal">
-<div class="close" onclick="closeTalent()">×</div>
-<img id="talentImg">
-<div class="modal-info">
-<h2 id="talentName"></h2>
-<p id="talentRole"></p>
-<button onclick="window.location='startproject.html'">Book Talent</button>
-</div>
-</div>
+<!-- SOCIALS -->
+<section class="socials" id="socials">
 
-<!-- BOOKING -->
-<section class="booking">
-<h2>Work With Our Talent</h2>
-<p>Book culture-leading talent for your next campaign.</p>
-<button onclick="window.location='startproject.html'">Start a Project</button>
+  <div class="social-container">
+
+    <!-- HEADER -->
+    <div class="social-header">
+      <h2>100 HUB COMMUNITY</h2>
+      <p>
+        Join a global network of talent, artists, and influencers.
+        Stay connected through our live platforms.
+      </p>
+    </div>
+
+    <!-- LIVE ACTIVITY STRIP -->
+    <div class="live-strip">
+
+      <div class="live-dot"></div>
+      <div class="live-text">Live Community Activity</div>
+
+      <div class="ticker">
+        <span> New creator joined • </span>
+        <span> Artist collaboration posted • </span>
+        <span> Influencer campaign launched • </span>
+        <span> Talent scouting active • </span>
+      </div>
+
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div class="social-links">
+
+      <a href="#" class="social instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+
+      <a href="#" class="social tiktok">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+
+      <a href="#" class="social youtube">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+
+      <a href="mailto:you@email.com" class="social email">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
-
-<!-- FOOTER -->
-<footer>
-<p>© 2026 100 Projects Agency</p>
-<p>Creative Direction • Campaigns • Talent</p>
+<section>
+  <!-- FOOTER -->
+ <footer>
+© 2026 100 Projects Agency • Creative Direction • Campaigns • Talent
 </footer>
-
+</section>
 <script>
 // NAV DROPDOWN
 const menuToggle = document.getElementById('menuToggle');
@@ -303,12 +617,47 @@ document.querySelectorAll(".work-item").forEach(card=>{
   card.addEventListener("mouseleave",()=>{ card.style.transform='rotateX(0deg) rotateY(0deg) scale(1)'; });
 });
 
-// RUNWAY AUTOSCROLL
-let runway=document.getElementById('runway'); let scrollAmount=0;
-let autoScroll = setInterval(()=>{ scrollAmount+=0.7; if(scrollAmount>runway.scrollWidth-runway.clientWidth) scrollAmount=0; runway.scrollTo({left:scrollAmount, behavior:'smooth'}); },40);
-runway.addEventListener('mouseenter',()=>{ clearInterval(autoScroll); });
-runway.addEventListener('mouseleave',()=>{ autoScroll=setInterval(()=>{ scrollAmount+=0.7; if(scrollAmount>runway.scrollWidth-runway.clientWidth) scrollAmount=0; runway.scrollTo({left:scrollAmount, behavior:'smooth'}); },40); });
+const cats = document.querySelectorAll(".cat");
+const rows = document.querySelectorAll(".runway-row");
 
+cats.forEach(cat => {
+  cat.addEventListener("click", () => {
+
+    const filter = cat.dataset.filter;
+
+    // active state
+    cats.forEach(c => c.classList.remove("active"));
+    cat.classList.add("active");
+
+    rows.forEach(row => {
+
+      if (filter === "all") {
+        row.style.display = "flex";
+        row.style.opacity = "1";
+        row.style.transform = "scale(1)";
+      } else {
+        if (row.classList.contains(filter)) {
+          row.style.display = "flex";
+          row.style.opacity = "1";
+          row.style.transform = "scale(1)";
+
+          // smooth scroll into view
+          setTimeout(() => {
+            row.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }, 150);
+
+        } else {
+          row.style.display = "none";
+        }
+      }
+
+    });
+
+  });
+});
 </script>
 
 </body>
